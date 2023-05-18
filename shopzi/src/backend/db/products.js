@@ -7,7 +7,7 @@ import { v4 as uuid } from "uuid";
 
 export const products = [
   {
-    _id: 1,
+    _id: uuid,
     image:
       "https://assets.myntassets.com/h_720,q_90,w_540/v1/…enWhiteSlimFitTartanChecksCheckedCasualShirt1.jpg",
     category: "Men",
