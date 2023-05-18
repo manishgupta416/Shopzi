@@ -8,20 +8,32 @@ import { v4 as uuid } from "uuid";
 export const categories = [
   {
     _id: uuid(),
-    categoryName: "fiction",
+    categoryName: "Men",
     description:
-      "literature in the form of prose, especially novels, that describes imaginary events and people",
+      "The product category for men in an e-commerce app offers a wide range of clothing, footwear, accessories, grooming products, electronics, and sports gear tailored specifically for men's needs and preferences.",
   },
   {
     _id: uuid(),
-    categoryName: "non-fiction",
+    categoryName: "Women",
     description:
-      "Non-fiction is writing that gives information or describes real events, rather than telling a story.",
+      "The product category for women in an e-commerce app offers a diverse selection of clothing, footwear, accessories, beauty products, electronics, and lifestyle items designed to cater to women's preferences and needs.",
   },
   {
     _id: uuid(),
-    categoryName: "horror",
+    categoryName: "Kids",
     description:
-      "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
+      "The product category for kids in an e-commerce app offers a wide variety of clothing, toys, accessories, and other items specifically designed for children of different ages.",
+  },
+  {
+    _id: uuid(),
+    categoryName: "Electronics",
+    description:
+      "The electronics product category in an e-commerce app features a comprehensive range of devices, gadgets, and accessories for various electronic needs, including smartphones, laptops, televisions, headphones, and more.",
+  },
+  {
+    _id: uuid(),
+    categoryName: "Home Appliances",
+    description:
+      "The home appliance product category in an e-commerce app offers a diverse selection of essential appliances for households, including refrigerators, washing machines, dishwashers, vacuum cleaners, and more.",
   },
 ];
