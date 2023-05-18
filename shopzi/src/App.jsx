@@ -1,7 +1,7 @@
 import React from 'react'
 import {Routes ,Route} from 'react-router-dom'
 import Mockman from 'mockman-js'
-import Home from './pages/Home'
+import Home from './pages/Home/Home'
 const App = () => {
   return (
     <>
