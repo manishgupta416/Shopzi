@@ -15,6 +15,7 @@ const ProductList = () => {
     ratingFilteredData,
     sortFilteredData,
     rangeFilteredProducts,
+    otherFiltersData
   } = useContext(ProductContext);
   return (
     <>
@@ -255,10 +256,10 @@ const ProductList = () => {
               <label className="input-checkbox" htmlFor="input-checkbox">
                 <input
                   type="checkbox"
-                  checked={state.checkbox.includes("inStock")}
+                  checked={state.otherCheckboxFilters.includes("inStock")}
                   onChange={(e) =>
                     dispatch({
-                      type: "checkbox",
+                      type: "otherFilters",
                       payload: {
                         checked: e.target.checked,
                         value: e.target.value,
@@ -274,10 +275,10 @@ const ProductList = () => {
               <label className="input-checkbox" htmlFor="input-checkbox">
                 <input
                   type="checkbox"
-                  checked={state.checkbox.includes("fastDelivery")}
+                  checked={state.otherCheckboxFilters.includes("fastDelivery")}
                   onChange={(e) =>
                     dispatch({
-                      type: "checkbox",
+                      type: "otherFilters",
                       payload: {
                         checked: e.target.checked,
                         value: e.target.value,
@@ -297,12 +298,12 @@ const ProductList = () => {
           <div className="product-heading">
             <h3>Showing All Products</h3>
             <span>
-              (Showing {rangeFilteredProducts.length} Products out of{" "}
-              {rangeFilteredProducts.length} products)
+              (Showing {otherFiltersData.length} Products out of{" "}
+              {otherFiltersData.length} products)
             </span>
           </div>
           <div className="product-lists">
-            {rangeFilteredProducts.map(
+            {otherFiltersData.map(
               ({
                 _id,
                 title,

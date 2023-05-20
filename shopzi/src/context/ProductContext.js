@@ -14,6 +14,7 @@ export const ProductProvider = ({ children }) => {
     rating: "",
     sort: "",
     range: 0,
+    otherCheckboxFilters: [],
   });
 
   const getAllProducts = async () => {
@@ -68,12 +69,20 @@ export const ProductProvider = ({ children }) => {
       : ratingFilteredData;
 
   const rangeFilteredProducts =
-    Number(state.range)>0
-     ?
-      sortFilteredData.filter(
-        (product) => Number(product.price) >= Number(state.range)
-      ) : sortFilteredData
+    Number(state.range) > 0
+      ? sortFilteredData.filter(
+          (product) => Number(product.price) >= Number(state.range)
+        )
+      : sortFilteredData;
 
+  const otherFiltersData =
+    state.otherCheckboxFilters.length > 0
+      ? rangeFilteredProducts.filter((product) =>
+          state.otherCheckboxFilters.find((key) => product[key])
+        )
+      : rangeFilteredProducts;
+
+      console.log(state.otherCheckboxFilters)
   return (
     <ProductContext.Provider
       value={{
@@ -87,6 +96,7 @@ export const ProductProvider = ({ children }) => {
         ratingFilteredData,
         sortFilteredData,
         rangeFilteredProducts,
+        otherFiltersData
       }}
     >
       {children}
