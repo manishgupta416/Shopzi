@@ -1,24 +1,14 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Loader from "../../components/Loader/Loader";
 import "./Home.css";
 import { NavLink } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
+import { ProductContext } from "../../context/ProductContext";
 
 const Home = () => {
-  const [categories, setCategories] = useState([]);
-
-  const fetchCategories = async () => {
-    const res = await fetch("/api/categories");
-    const resData = await res.json();
-    setCategories(resData.categories);
-  };
-  useEffect(() => {
-    fetchCategories();
-  }, []);
-  // console.log(categories.categories
-  //   )
+  const {categories}= useContext(ProductContext)
+  
   return (
     <>
       <Navbar />

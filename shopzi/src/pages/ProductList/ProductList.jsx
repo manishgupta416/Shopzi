@@ -1,21 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext} from "react";
 
 import "./ProductList.css";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
+import { ProductContext } from "../../context/ProductContext";
 
 const ProductList = () => {
-  const [products, setProducts] = useState([]);
-
-  const getAllProducts = async () => {
-    const res = await fetch("/api/products");
-    const resData = await res.json();
-    setProducts(resData.products);
-  };
-
-  useEffect(() => {
-    getAllProducts();
-  }, []);
+  const {products} = useContext(ProductContext)
   return (
     <>
       <Navbar />
