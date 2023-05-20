@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import "./ProductList.css";
 import Navbar from "../../components/Navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -100,7 +101,7 @@ const ProductList = () => {
         <div className="product-container">
           <div className="product-heading">
             <h3>Showing All Products</h3>
-            <span>(Showing 11 Products out of 11 products)</span>
+            <span>(Showing {products.length} Products out of {products.length} products)</span>
           </div>
           <div className="product-lists">
             {products.map(
@@ -135,7 +136,7 @@ const ProductList = () => {
           </div>
           <div className="product-card-price">
             <p>{price}</p>
-            <p>{original_price}</p>
+            <p className="o-price">{original_price}</p>
             {/* <p className="discount">{discount}</p> */}
           </div>
           <div className="product-card-button">
@@ -148,6 +149,7 @@ const ProductList = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };

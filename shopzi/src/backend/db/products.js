@@ -9,7 +9,7 @@ export const products = [
   {
     _id: uuid,
     image:
-      "https://assets.myntassets.com/h_720,q_90,w_540/v1/…enWhiteSlimFitTartanChecksCheckedCasualShirt1.jpg",
+      "https://rukminim1.flixcart.com/image/612/612/xif0q/shirt/z/3/7/xl-r-dark-grey-stoneberg-original-imaghghn2vcf5euv.jpeg?q=70",
     category: "Men",
     rating: "3.9",
     size: "L",
@@ -149,7 +149,7 @@ export const products = [
   {
     _id: uuid,
     image:
-      "https://rukminim1.flixcart.com/image/128/128/l3t2fm80/ethnic-set/t/v/w/xl-6204-isha-e-kart-original-imageugfnfs3tu6a.jpeg?q=70",
+      "https://rukminim1.flixcart.com/image/612/612/l0mr7gw0/ethnic-set/p/e/n/m-palazoo-set-kenix-world-original-imagcdtgh3ra7czp.jpeg?q=70",
     category: "Women",
     rating: "3.9",
     size: "L",

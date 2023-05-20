@@ -169,6 +169,10 @@
   font-size: large;
   font-weight: bold;
 }
+.o-price{
+  text-decoration: line-through;
+  color: gray;
+}
 .discount {
   margin-left: auto;
 }
@@ -196,7 +200,6 @@
 .product-card-wishlist {
   position: relative;
     top: -245px;
-  
     left: 160px;
 }
 
