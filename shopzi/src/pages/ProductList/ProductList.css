@@ -28,6 +28,19 @@
   top: 69px;
   /* fixed esliye taki hm scroll kar skte , height dene pe scroll kar payenge */
 }
+#scrollbar::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: white;
+}
+
+#scrollbar::-webkit-scrollbar {
+  width: 8px;
+  background-color: white;
+}
+
+#scrollbar::-webkit-scrollbar-thumb {
+  background-color: tomato;
+}
 
 .filter-header {
   display: flex;
