@@ -16,11 +16,12 @@ export const products = [
     description: "Men Navy Blue Slim Fit Tartan Checks Checked Casual Shirt",
     title: "HIGHLANDER",
     trending: false,
-    original_price: "1199",
-    price: "419",
+    original_price: "₹1199",
+    price: "₹419",
     delivery_time: "9",
     reviews: "4.0k",
     in_stock: true,
+    discount:'40% OFF'
   },
 
   {
@@ -33,11 +34,12 @@ export const products = [
     description: "Men Regular Fit Printed Cut Away Collar Casual Shirt",
     title: "Qugue",
     trending: false,
-    original_price: "1199",
-    price: "600",
+    original_price: "₹1199",
+    price: "₹600",
     delivery_time: "15",
     reviews: "4.5k",
     in_stock: true,
+    discount:'40% OFF'
   },
   {
     _id: uuid,
@@ -49,11 +51,12 @@ export const products = [
     description: "Men Slim Fit Solid Mandarin Collar Casual Shirt",
     title: "Roadstar",
     trending: false,
-    original_price: "1199",
-    price: "199",
+    original_price: "₹1199",
+    price: "₹199",
     delivery_time: "9",
     reviews: "3.0k",
     in_stock: false,
+    discount:'40% OFF'
   },
   {
     _id: uuid,
@@ -65,11 +68,12 @@ export const products = [
     description: "Men Regular Fit Printed Cut Away Collar Casual Shirt",
     title: "icome ",
     trending: false,
-    original_price: "2199",
-    price: "1419",
+    original_price: "₹2199",
+    price: "₹1419",
     delivery_time: "19",
     reviews: "4.8k",
     in_stock: true,
+    discount:'40% OFF'
   },
 
   {
@@ -82,11 +86,12 @@ export const products = [
     description: "512 Men Tapered Fit Mid Rise Black Jeans",
     title: "LEVIS",
     trending: false,
-    original_price: "1199",
-    price: "2,239",
+    original_price: "₹1199",
+    price: "₹2,239",
     delivery_time: "9",
     reviews: "4.0k",
     in_stock: true,
+    discount:'40% OFF'
   },
 
   {
@@ -99,11 +104,12 @@ export const products = [
     description: "Men Slim Mid Rise Grey Jeans",
     title: "METRONAUT By Flipkart  ",
     trending: false,
-    original_price: "₹1,699",
-    price: "419",
+    original_price: "₹₹1,699",
+    price: "₹419",
     delivery_time: "19",
     reviews: "4.5k",
     in_stock: true,
+    discount:'40% OFF'
   },
   {
     _id: uuid,
@@ -115,11 +121,12 @@ export const products = [
     description: "Men Slim Mid Rise Light Blue Jeans",
     title: "Supernova Inc.   ",
     trending: false,
-    original_price: "₹389₹1,299",
-    price: "419",
+    original_price: "₹1,299",
+    price: "₹419",
     delivery_time: "9",
     reviews: "4.0k",
     in_stock: true,
+    discount:'40% OFF'
   },
   //women
   {
@@ -132,11 +139,12 @@ export const products = [
     description: "Women Kurta and Pant Set Viscose Rayon",
     title: "Kriska    ",
     trending: false,
-    original_price: "₹629₹2,499",
-    price: "419",
+    original_price: "₹2,499",
+    price: "₹629",
     delivery_time: "9",
     reviews: "4.0k",
     in_stock: true,
+    discount:'40% OFF'
   },
   {
     _id: uuid,
@@ -148,11 +156,12 @@ export const products = [
     description: "Women Top and Skirt Set Viscose Rayon",
     title: "Isha e Kart   ",
     trending: false,
-    original_price: "₹447₹1,599",
-    price: "419",
+    original_price: "₹1,599",
+    price: "₹447",
     delivery_time: "9",
     reviews: "4.0k",
     in_stock: true,
+    discount:'40% OFF'
   },
 
   {
@@ -165,11 +174,12 @@ export const products = [
     description: "Women Printed Viscose Rayon Straight Kurta  (Purple)",
     title: "CKM  ",
     trending: false,
-    original_price: "₹383₹1,999",
-    price: "419",
+    original_price: "₹1,999",
+    price: "₹383",
     delivery_time: "9",
     reviews: "4.0k",
     in_stock: true,
+    discount:'40% OFF'
   },
   {
     _id: uuid,
@@ -181,11 +191,12 @@ export const products = [
     description: "Women Typography Round Neck Purple T-Shirt",
     title: "Adyavastram  ",
     trending: false,
-    original_price: "₹230₹1,099",
-    price: "419",
+    original_price: "₹1,099",
+    price: "₹230",
     delivery_time: "9",
     reviews: "4.0k",
     in_stock: true,
+    discount:'40% OFF'
   },
   {
     _id: uuid,
@@ -197,11 +208,12 @@ export const products = [
     description: "Women Printed Round Neck Black T-Shirt",
     title: "Lasmo   ",
     trending: false,
-    original_price: "₹249₹649",
-    price: "419",
+    original_price: "₹649",
+    price: "₹249",
     delivery_time: "9",
     reviews: "4.0k",
     in_stock: true,
+    discount:'40% OFF'
   },
 
   // kids
@@ -217,11 +229,12 @@ export const products = [
       "Boys Festive & Party Kurta and Churidar Set  (Green Pack of 1)",
     title: "PRO ETHIC    ",
     trending: false,
-    original_price: "₹647₹2,499",
-    price: "419",
+    original_price: "₹2,499",
+    price: "₹647",
     delivery_time: "9",
     reviews: "4.0k",
     in_stock: true,
+    discount:'40% OFF'
   },
 
   {
@@ -235,11 +248,12 @@ export const products = [
       "Boys Festive & Party, Wedding Kurta, Waistcoat and Pyjama Set  (Multicolor Pack of 1)",
     title: "Lasmo   ",
     trending: false,
-    original_price: "₹403₹999",
-    price: "419",
+    original_price: "₹999",
+    price: "₹403",
     delivery_time: "9",
     reviews: "4.0k",
     in_stock: true,
+    discount:'40% OFF'
   },
 
   {
@@ -252,11 +266,12 @@ export const products = [
     description: "Women Printed Round Neck Black T-Shirt",
     title: "Lasmo   ",
     trending: false,
-    original_price: "₹249₹649",
-    price: "419",
+    original_price: "₹649",
+    price: "₹249",
     delivery_time: "9",
     reviews: "4.0k",
     in_stock: true,
+    discount:'40% OFF'
   },
   // electronics
   {
@@ -274,6 +289,7 @@ export const products = [
     delivery_time: "9",
     reviews: "4.0k",
     in_stock: true,
+    discount:'40% OFF'
   },
   {
     _id: uuid,
@@ -290,6 +306,7 @@ export const products = [
     delivery_time: "9",
     reviews: "4.0k",
     in_stock: true,
+    discount:'40% OFF'
   },
   {
     _id: uuid,
@@ -306,6 +323,7 @@ export const products = [
     delivery_time: "9",
     reviews: "4.0k",
     in_stock: true,
+    discount:'40% OFF'
   },
   {
     _id: uuid,
@@ -321,6 +339,7 @@ export const products = [
     delivery_time: "9",
     reviews: "4.0k",
     in_stock: true,
+    discount:'40% OFF'
   },
 
   // laptop
@@ -339,6 +358,7 @@ export const products = [
     delivery_time: "9",
     reviews: "4.0k",
     in_stock: true,
+    discount:'40% OFF'
   },
   {
     _id: uuid,
@@ -355,6 +375,7 @@ export const products = [
     delivery_time: "9",
     reviews: "4.0k",
     in_stock: true,
+    discount:'40% OFF'
   },
 
   {
@@ -372,6 +393,7 @@ export const products = [
     delivery_time: "9",
     reviews: "4.0k",
     in_stock: true,
+    discount:'40% OFF'
   },
 
   {
@@ -389,6 +411,7 @@ export const products = [
     delivery_time: "9",
     reviews: "4.0k",
     in_stock: true,
+    discount:'40% OFF'
   },
 
   // shoes
@@ -408,6 +431,7 @@ export const products = [
     delivery_time: "9",
     reviews: "4.0k",
     in_stock: true,
+    discount:'40% OFF'
   },
 
   {
@@ -425,6 +449,7 @@ export const products = [
     delivery_time: "9",
     reviews: "4.0k",
     in_stock: true,
+    discount:'40% OFF'
   },
   {
     _id: uuid,
@@ -441,6 +466,7 @@ export const products = [
     delivery_time: "9",
     reviews: "4.0k",
     in_stock: true,
+    discount:'40% OFF'
   },
 
   {
@@ -458,6 +484,7 @@ export const products = [
     delivery_time: "9",
     reviews: "4.0k",
     in_stock: true,
+    discount:'40% OFF'
   },
 
   // appliances
@@ -478,6 +505,7 @@ export const products = [
     delivery_time: "9",
     reviews: "4.0k",
     in_stock: true,
+    discount:'40% OFF'
   },
 
   {
@@ -496,6 +524,7 @@ export const products = [
     delivery_time: "9",
     reviews: "4.0k",
     in_stock: true,
+    discount:'40% OFF'
   },
 
   {
@@ -514,5 +543,6 @@ export const products = [
     delivery_time: "9",
     reviews: "4.0k",
     in_stock: true,
+    discount:'40% OFF'
   },
 ];
