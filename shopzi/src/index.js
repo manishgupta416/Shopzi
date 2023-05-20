@@ -10,12 +10,12 @@ import { ProductProvider } from "./context/ProductContext";
 makeServer();
 
 ReactDOM.render(
-  <React.StrictMode>
+
     <Router>
       <ProductProvider>
         <App />
       </ProductProvider>
     </Router>
-  </React.StrictMode>,
+,
   document.getElementById("root")
 );

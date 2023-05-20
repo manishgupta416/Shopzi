@@ -41,10 +41,19 @@
 #scrollbar::-webkit-scrollbar-thumb {
   background-color: tomato;
 }
-
+.clear-filter{
+  cursor: pointer;
+  background-color: #ff6347;
+  color: white;
+  border-radius: 7px;
+  padding: 5px 10px;
+  border: 0;
+  font-weight: 600;
+}
 .filter-header {
   display: flex;
   gap: 114px;
+      align-items: center;
   /* justify-content: space-evenly; */
 }
 .filter-price {

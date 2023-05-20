@@ -48,4 +48,5 @@ export const categories = [
       "The home appliance product category in an e-commerce app offers a diverse selection of essential appliances for households, including refrigerators, washing machines, dishwashers, vacuum cleaners, and more.",
       img:'https://media.istockphoto.com/id/1211554164/photo/3d-render-of-home-appliances-collection-set.jpg?b=1&s=612x612&w=0&k=20&c=gkgvbE0sGmNs5xOWBlfhEXPENF2tqXzG2k5_svFAwLw='
   },
+
 ];

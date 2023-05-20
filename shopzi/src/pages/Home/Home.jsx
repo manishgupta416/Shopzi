@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+
 import Navbar from "../../components/Navbar/Navbar";
 import Loader from "../../components/Loader/Loader";
 import "./Home.css";
@@ -14,8 +15,8 @@ const Home = () => {
       <Navbar />
       {/* <Loader/> */}
       <div className="category-container">
-        {categories.map(({ categoryName, description, img }) => (
-          <div className="category-card">
+        {categories.map(({ categoryName, description, img,_id }) => (
+          <div className="category-card" key={_id}>
             {" "}
             <div className="card-title">{categoryName}</div>
             <img className="card-img" src={img} alt={categoryName} />
