@@ -14,6 +14,7 @@
   flex-direction: column;
   border: 2px solid white;
   border-style: dotted;
+  cursor: pointer;
 }
 
 .card-img {
@@ -33,10 +34,12 @@
   margin-top: 20px;
   height: 343px;
   object-fit: cover;
+  cursor: pointer;
 }
 .arrival-container {
   display: flex;
   justify-content: space-evenly;
+  cursor: pointer;
 }
 .arrival-card {
   display: flex;

@@ -3,23 +3,31 @@ import React, { useContext } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Loader from "../../components/Loader/Loader";
 import "./Home.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import { ProductContext } from "../../context/ProductContext";
 
 const Home = () => {
-  const {categories}= useContext(ProductContext)
-  
+  const { categories, state, dispatch } = useContext(ProductContext);
+  const navigate = useNavigate();
   return (
     <>
       <Navbar />
       {/* <Loader/> */}
       <div className="category-container">
-        {categories.map(({ categoryName, description, img,_id }) => (
-          <div className="category-card" key={_id}>
+        {categories.map(({ categoryName, description, img, _id }) => (
+          <div className="category-card" key={_id} value={categoryName}>
             {" "}
             <div className="card-title">{categoryName}</div>
-            <img className="card-img" src={img} alt={categoryName} />
+            <img
+              onClick={(e) =>
+                // dispatch({ type: "checkbox", payload: categoryName })
+                navigate("/productlist-page")
+              }
+              className="card-img"
+              src={img}
+              alt={categoryName}
+            />
           </div>
         ))}
       </div>
@@ -34,6 +42,10 @@ const Home = () => {
 
       <div className="sales-container">
         <img
+          onClick={(e) =>
+            // dispatch({ type: "checkbox", payload: categoryName })
+            navigate("/productlist-page")
+          }
           className="sales-img"
           src="https://sslimages.shoppersstop.com/sys-master/root/h39/hf6/29839254323230/Static-Web-spaykar--Mix-Cat%28500-px%29---2023-04-18--home-page-first-time-on-discount_.jpg"
           alt=""
@@ -48,10 +60,17 @@ const Home = () => {
         />
       </div>
 
-      <div className="arrival-container">
+      <div
+        className="arrival-container"
+        onClick={(e) =>
+          // dispatch({ type: "checkbox", payload: categoryName })
+          navigate("/productlist-page")
+        }
+      >
         <div className="fashion-new-arrivals arrival-card">
           <div className="arrival-img">
-            <img className="arrival-img"
+            <img
+              className="arrival-img"
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlCfOzrP6csPaHhFYFT2FlT7AmP8hoS81AYA&usqp=CAU"
               alt=""
             />
@@ -69,9 +88,16 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="electronics-new-arr arrival-card">
+        <div
+          className="electronics-new-arr arrival-card"
+          onClick={(e) =>
+            // dispatch({ type: "checkbox", payload: categoryName })
+            navigate("/productlist-page")
+          }
+        >
           <div className="arrival-img">
-            <img className="arrival-img"
+            <img
+              className="arrival-img"
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxX1LebjtW7Q6fWz0XmZSp-CtqsYEiNeHQgA&usqp=CAU"
               alt=""
             />
@@ -90,8 +116,7 @@ const Home = () => {
         </div>
       </div>
 
-     
-      <Footer/>
+      <Footer />
     </>
   );
 };

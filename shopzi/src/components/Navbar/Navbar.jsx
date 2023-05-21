@@ -1,16 +1,17 @@
 import React, { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import "./Navbar.css";
 import { ProductContext } from "../../context/ProductContext";
 
 const Navbar = () => {
   const { state, dispatch } = useContext(ProductContext);
+  const navigate = useNavigate();
   return (
     <>
       <div className="nav">
         <div className="nav-left">
-          <NavLink tp="/">
+          <NavLink to="/">
             <h2 className="nav-header">Shopzi</h2>
           </NavLink>
         </div>
@@ -44,7 +45,10 @@ const Navbar = () => {
           </NavLink>
           <NavLink to="/user-profile">
             {" "}
-            <i className="fa-regular fa-user fa-2x" style={{ color: "white" }}></i>
+            <i
+              className="fa-regular fa-user fa-2x"
+              style={{ color: "white" }}
+            ></i>
           </NavLink>
         </div>
       </div>

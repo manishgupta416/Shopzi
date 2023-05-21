@@ -17,7 +17,7 @@ export const ProductProvider = ({ children }) => {
     otherCheckboxFilters: [],
   });
   console.log(state.sort);
-
+  console.log(state.checkbox);
   const getAllProducts = async () => {
     const res = await fetch("/api/products");
     const resData = await res.json();
