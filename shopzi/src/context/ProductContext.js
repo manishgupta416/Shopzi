@@ -16,6 +16,7 @@ export const ProductProvider = ({ children }) => {
     range: 0,
     otherCheckboxFilters: [],
   });
+  console.log(state.sort);
 
   const getAllProducts = async () => {
     const res = await fetch("/api/products");
@@ -82,7 +83,7 @@ export const ProductProvider = ({ children }) => {
         )
       : rangeFilteredProducts;
 
-      console.log(state.otherCheckboxFilters)
+  console.log(state.otherCheckboxFilters);
   return (
     <ProductContext.Provider
       value={{
@@ -96,7 +97,7 @@ export const ProductProvider = ({ children }) => {
         ratingFilteredData,
         sortFilteredData,
         rangeFilteredProducts,
-        otherFiltersData
+        otherFiltersData,
       }}
     >
       {children}

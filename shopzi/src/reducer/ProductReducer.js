@@ -21,7 +21,15 @@ export const ProductReducer = (state, action) => {
       return { ...state, sort: action.payload };
 
     case "clearFilter":
-      return { ...state, search: "", checkbox: [], rating: "", sort: "",otherCheckboxFilters:[] };
+      return {
+        ...state,
+        search: "",
+        checkbox: [],
+        rating: "",
+        sort: "",
+        otherCheckboxFilters: [],
+        range: 0,
+      };
 
     case "range":
       return { ...state, range: action.payload };
@@ -30,7 +38,9 @@ export const ProductReducer = (state, action) => {
         ...state,
         otherCheckboxFilters: action.payload.checked
           ? [...state.otherCheckboxFilters, action.payload.value]
-          : state.otherCheckboxFilters.filter((item) => item !== action.payload.value),
+          : state.otherCheckboxFilters.filter(
+              (item) => item !== action.payload.value
+            ),
       };
     default:
       return { ...state };

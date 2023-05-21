@@ -15,7 +15,7 @@ const ProductList = () => {
     ratingFilteredData,
     sortFilteredData,
     rangeFilteredProducts,
-    otherFiltersData
+    otherFiltersData,
   } = useContext(ProductContext);
   return (
     <>
@@ -28,7 +28,7 @@ const ProductList = () => {
               className="clear-filter"
               onClick={() => dispatch({ type: "clearFilter" })}
             >
-              Clear 
+              Clear
             </p>
           </div>
           {/*  */}
@@ -55,9 +55,10 @@ const ProductList = () => {
           <div className="filter-category">
             <h4>Category</h4>
             <div className="filter-checkbox">
-              <label className="input-checkbox" htmlFor="input-checkbox">
+              <label className="input-checkbox" htmlFor="Men">
                 <input
                   type="checkbox"
+                  id="Men"
                   checked={state.checkbox.includes("Men")}
                   onChange={(e) =>
                     dispatch({
@@ -72,9 +73,10 @@ const ProductList = () => {
                 />
                 <span>Men</span>
               </label>
-              <label className="input-checkbox" htmlFor="input-checkbox">
+              <label className="input-checkbox" htmlFor="Women">
                 <input
                   type="checkbox"
+                  id="Women"
                   checked={state.checkbox.includes("Women")}
                   onChange={(e) =>
                     dispatch({
@@ -90,9 +92,10 @@ const ProductList = () => {
                 <span>Women</span>{" "}
               </label>
 
-              <label className="input-checkbox" htmlFor="input-checkbox">
+              <label className="input-checkbox" htmlFor="Kids">
                 <input
                   type="checkbox"
+                  id="Kids"
                   checked={state.checkbox.includes("Kids")}
                   onChange={(e) =>
                     dispatch({
@@ -108,9 +111,10 @@ const ProductList = () => {
                 <span>Kids</span>{" "}
               </label>
 
-              <label className="input-checkbox" htmlFor="input-checkbox">
+              <label className="input-checkbox" htmlFor="Electronics">
                 <input
                   type="checkbox"
+                  id="Electronics"
                   checked={state.checkbox.includes("Electronics")}
                   onChange={(e) =>
                     dispatch({
@@ -126,9 +130,10 @@ const ProductList = () => {
                 <span>Electronics</span>{" "}
               </label>
 
-              <label className="input-checkbox" htmlFor="input-checkbox">
+              <label className="input-checkbox" htmlFor="Mobiles">
                 <input
                   type="checkbox"
+                  id="Mobiles"
                   checked={state.checkbox.includes("Mobiles")}
                   onChange={(e) =>
                     dispatch({
@@ -144,9 +149,10 @@ const ProductList = () => {
                 <span>Mobiles</span>{" "}
               </label>
 
-              <label className="input-checkbox" htmlFor="input-checkbox">
+              <label className="input-checkbox" htmlFor="Home Appliances">
                 <input
                   type="checkbox"
+                  id="Home Appliances"
                   checked={state.checkbox.includes("Home Appliances")}
                   onChange={(e) =>
                     dispatch({
@@ -168,23 +174,25 @@ const ProductList = () => {
           <div className="filter-rating">
             <h4>Rating</h4>
             <div className="filter-rating-options">
-              <label className="input-rating" htmlFor="rating">
+              <label className="input-rating" htmlFor="4.5">
                 <input
                   type="radio"
+                  id="4.5"
                   name="sort-by-rating"
                   onChange={(e) =>
                     dispatch({ type: "rating", payload: e.target.value })
                   }
-                  // checked={state.rating===4.5}
+                  checked={state.rating === "4.5"}
                   value={4.5}
                 />
                 <span>4.5 and above</span>
               </label>
-              <label className="input-rating" htmlFor="rating">
+              <label className="input-rating" htmlFor="4.0">
                 <input
                   type="radio"
+                  id="4.0"
                   name="sort-by-rating"
-                  // checked={state.rating===4.0}
+                  checked={state.rating === "4"}
                   onChange={(e) =>
                     dispatch({ type: "rating", payload: e.target.value })
                   }
@@ -192,11 +200,12 @@ const ProductList = () => {
                 />
                 <span>4.0 and above</span>
               </label>
-              <label className="input-rating" htmlFor="rating">
+              <label className="input-rating" htmlFor="3.5">
                 <input
                   type="radio"
+                  id="3.5"
                   name="sort-by-rating"
-                  // checked={state.rating===3.5}
+                  checked={state.rating === "3.5"}
                   onChange={(e) =>
                     dispatch({ type: "rating", payload: e.target.value })
                   }
@@ -204,11 +213,12 @@ const ProductList = () => {
                 />
                 <span>3.5 and above</span>
               </label>
-              <label className="input-rating" htmlFor="rating">
+              <label className="input-rating" htmlFor="3.0">
                 <input
                   type="radio"
+                  id="3.0"
                   name="sort-by-rating"
-                  // checked={state.rating===3.0}
+                  checked={state.rating === "3"}
                   onChange={(e) =>
                     dispatch({ type: "rating", payload: e.target.value })
                   }
@@ -216,17 +226,31 @@ const ProductList = () => {
                 />
                 <span>3.0 and above</span>
               </label>
+              <label className="input-rating" htmlFor="1.0">
+                <input
+                  type="radio"
+                  id="1.0"
+                  name="sort-by-rating"
+                  checked={state.rating === "1"}
+                  onChange={(e) =>
+                    dispatch({ type: "rating", payload: e.target.value })
+                  }
+                  value={1.0}
+                />
+                <span>1.0 and above</span>
+              </label>
             </div>
           </div>
           {/*  */}
           <div className="filter-sort">
             <h4>Sort</h4>
             <div className="sort-options">
-              <label className="input-sort" htmlFor="sort-price">
+              <label className="input-sort" htmlFor="lTh">
                 <input
                   type="radio"
+                  id="lTh"
                   name="sort-by-price"
-                  // checked={state.rating==="lTh"}
+                  checked={state.sort === "lTh"}
                   onChange={(e) =>
                     dispatch({ type: "sort", payload: e.target.value })
                   }
@@ -234,11 +258,12 @@ const ProductList = () => {
                 />
                 <span>low to high price</span>
               </label>
-              <label className="input-sort" htmlFor="sort-price">
+              <label className="input-sort" htmlFor="hTl">
                 <input
                   type="radio"
+                  id="hTl"
                   name="sort-by-price"
-                  // checked={state.rating!=="hTl"}
+                  checked={state.sort === "hTl"}
                   onChange={(e) =>
                     dispatch({ type: "sort", payload: e.target.value })
                   }
@@ -253,9 +278,10 @@ const ProductList = () => {
           <div className="filter-category">
             <h4>Others Filters</h4>
             <div className="filter-checkbox">
-              <label className="input-checkbox" htmlFor="input-checkbox">
+              <label className="input-checkbox" htmlFor="inStock">
                 <input
                   type="checkbox"
+                  id="inStock"
                   checked={state.otherCheckboxFilters.includes("inStock")}
                   onChange={(e) =>
                     dispatch({
@@ -267,14 +293,14 @@ const ProductList = () => {
                     })
                   }
                   value={"inStock"}
-                  
                 />
                 <span>Include Out of Stock</span>
               </label>
 
-              <label className="input-checkbox" htmlFor="input-checkbox">
+              <label className="input-checkbox" htmlFor="fastDelivery">
                 <input
                   type="checkbox"
+                  id="fastDelivery"
                   checked={state.otherCheckboxFilters.includes("fastDelivery")}
                   onChange={(e) =>
                     dispatch({
@@ -285,7 +311,6 @@ const ProductList = () => {
                       },
                     })
                   }
-                  
                   value={"fastDelivery"}
                 />
                 <span>Fast Delivery Only</span>
