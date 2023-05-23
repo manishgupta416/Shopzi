@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
-
+import { NavLink, useNavigate } from "react-router-dom";
 import "./ProductList.css";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import { ProductContext } from "../../context/ProductContext";
+import { CartContext } from "../../context/CartContext";
 
 const ProductList = () => {
   const {
@@ -17,6 +18,8 @@ const ProductList = () => {
     rangeFilteredProducts,
     otherFiltersData,
   } = useContext(ProductContext);
+  const navigate = useNavigate();
+  const { addToCart, item, checkInCart, cart } = useContext(CartContext);
   return (
     <>
       <Navbar />
@@ -373,7 +376,16 @@ const ProductList = () => {
                       {/* <p className="discount">{discount}</p> */}
                     </div>
                     <div className="product-card-button">
-                      <button className="product-button">Add to cart</button>
+                      <button
+                        className="product-button"
+                        onClick={() => addToCart(image)}
+                      >
+                        {checkInCart(image) ? (
+                          <NavLink to="/cart">Go To Cart</NavLink>
+                        ) : (
+                          "Add to Cart"
+                        )}
+                      </button>
                     </div>
                   </div>
                 </div>

@@ -5,17 +5,18 @@ import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
 import { ProductProvider } from "./context/ProductContext";
+import { CartContextProvider } from "./context/CartContext";
 
 // Call make Server
 makeServer();
 
 ReactDOM.render(
-
-    <Router>
-      <ProductProvider>
+  <Router>
+    <ProductProvider>
+      <CartContextProvider>
         <App />
-      </ProductProvider>
-    </Router>
-,
+      </CartContextProvider>
+    </ProductProvider>
+  </Router>,
   document.getElementById("root")
 );

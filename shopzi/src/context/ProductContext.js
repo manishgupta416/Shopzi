@@ -84,6 +84,9 @@ export const ProductProvider = ({ children }) => {
       : rangeFilteredProducts;
 
   // console.log(state.otherCheckboxFilters);
+
+  ///CART ///
+
   return (
     <ProductContext.Provider
       value={{
