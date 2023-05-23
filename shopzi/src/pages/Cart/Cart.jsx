@@ -3,8 +3,15 @@ import Navbar from "../../components/Navbar/Navbar";
 import "./Cart.css";
 import { CartContext } from "../../context/CartContext";
 const Cart = () => {
-  const { cart, totalPrice, discountPrice, TotalFinalPrice } =
-    useContext(CartContext);
+  const {
+    cart,
+    totalPrice,
+    discountPrice,
+    TotalFinalPrice,
+    incQuantity,
+    decQuantity,
+    removeFromCart,
+  } = useContext(CartContext);
   return (
     <>
       <Navbar />
@@ -29,6 +36,7 @@ const Cart = () => {
                     in_stock,
                     review,
                     discount,
+                    quantity,
                   }) => (
                     <div className="cart-card">
                       <div className="img-container">
@@ -52,12 +60,29 @@ const Cart = () => {
                         <div className="product-offer">{discount}% OFF</div>
                         <div className="product-quantity">
                           <p>Quantity : </p>
-                          <button className="inc">+ </button>
-                          <p> 1 </p>
-                          <button className="dec">-</button>
+                          <button
+                            className="inc"
+                            onClick={() => incQuantity(image)}
+                          >
+                            +
+                          </button>
+                          <p> {quantity} </p>
+                          <button
+                            className="dec"
+                            onClick={() => decQuantity(image)}
+                            disabled={quantity === 1}
+                            style={{
+                              backgroundColor: quantity === 1 ? "gray" : "",
+                            }}
+                          >
+                            -
+                          </button>
                         </div>
                         <div className="product-buttons">
-                          <button className="cart-button">
+                          <button
+                            className="cart-button"
+                            onClick={() => removeFromCart(image)}
+                          >
                             Remove from cart{" "}
                           </button>
                           <button className="cart-button">

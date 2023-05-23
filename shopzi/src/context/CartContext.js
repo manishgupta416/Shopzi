@@ -18,11 +18,11 @@ export const CartContextProvider = ({ children }) => {
     );
 
     if (isFound === -1) {
-      setCart([...cart, selectedProduct]);
+      setCart([...cart, { ...selectedProduct, quantity: 1 }]);
       // } else {
       //   setCart(
       //     cart.map((cartItem) =>
-      //       cartItem._id === productId
+      //       cartItem.image === productImage
       //         ? {
       //             ...cartItem,
       //             quantity: "undefined" ? 1 : cartItem.quantity + 1,
@@ -36,21 +36,46 @@ export const CartContextProvider = ({ children }) => {
   };
 
   const totalPrice = cart.reduce(
-    (acc, curr) => Number(acc) + Number(curr.price),
+    (acc, curr) =>
+      (Number(acc) + Number(curr.price) * curr.quantity).toFixed(2),
     0
   );
 
   const discountPrice = cart.reduce(
     (acc, curr) =>
-      Number(acc) +
-      Number(curr.price) -
       (
-        Number(curr.price) * Number((Number(curr.discount) / 100).toFixed(2))
+        Number(acc) +
+        Number(curr.price) -
+        (
+          Number(curr.price) * Number((Number(curr.discount) / 100).toFixed(2))
+        ).toFixed(2)
       ).toFixed(2),
     0
   );
 
+  const incQuantity = (selectedId) =>
+    setCart(
+      cart.map((cartItem) =>
+        cartItem.image === selectedId
+          ? { ...cartItem, quantity: cartItem.quantity + 1 }
+          : cartItem
+      )
+    );
+
+  const decQuantity = (selectedId) =>
+    setCart(
+      cart.map((cartItem) =>
+        cartItem.image === selectedId
+          ? { ...cartItem, quantity: cartItem.quantity - 1 }
+          : cartItem
+      )
+    );
+  console.log(incQuantity);
   const TotalFinalPrice = totalPrice - discountPrice;
+
+  const removeFromCart = (selectedImage) => {
+    setCart(cart.filter((cartItem) => cartItem.image !== selectedImage));
+  };
   return (
     <CartContext.Provider
       value={{
@@ -61,6 +86,9 @@ export const CartContextProvider = ({ children }) => {
         totalPrice,
         discountPrice,
         TotalFinalPrice,
+        incQuantity,
+        decQuantity,
+        removeFromCart,
       }}
     >
       {" "}
