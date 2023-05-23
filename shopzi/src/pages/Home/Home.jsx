@@ -20,10 +20,10 @@ const Home = () => {
             {" "}
             <div className="card-title">{categoryName}</div>
             <img
-              onClick={(e) =>
-                // dispatch({ type: "checkbox", payload: categoryName })
-                navigate("/productlist-page")
-              }
+              onClick={(e) => {
+                dispatch({ type: "category", payload: [categoryName] });
+                navigate("/productlist-page");
+              }}
               className="card-img"
               src={img}
               alt={categoryName}
@@ -40,12 +40,14 @@ const Home = () => {
         />
       </div>
 
-      <div className="sales-container">
+      <div
+        className="sales-container"
+        onClick={(e) => {
+          dispatch({ type: "category", payload: ["Men", "Women", "Kids"] });
+          navigate("/productlist-page");
+        }}
+      >
         <img
-          onClick={(e) =>
-            // dispatch({ type: "checkbox", payload: categoryName })
-            navigate("/productlist-page")
-          }
           className="sales-img"
           src="https://sslimages.shoppersstop.com/sys-master/root/h39/hf6/29839254323230/Static-Web-spaykar--Mix-Cat%28500-px%29---2023-04-18--home-page-first-time-on-discount_.jpg"
           alt=""
@@ -60,14 +62,14 @@ const Home = () => {
         />
       </div>
 
-      <div
-        className="arrival-container"
-        onClick={(e) =>
-          // dispatch({ type: "checkbox", payload: categoryName })
-          navigate("/productlist-page")
-        }
-      >
-        <div className="fashion-new-arrivals arrival-card">
+      <div className="arrival-container">
+        <div
+          className="fashion-new-arrivals arrival-card"
+          onClick={(e) => {
+            dispatch({ type: "category", payload: ["Men", "Women"] });
+            navigate("/productlist-page");
+          }}
+        >
           <div className="arrival-img">
             <img
               className="arrival-img"
@@ -90,10 +92,10 @@ const Home = () => {
 
         <div
           className="electronics-new-arr arrival-card"
-          onClick={(e) =>
-            // dispatch({ type: "checkbox", payload: categoryName })
-            navigate("/productlist-page")
-          }
+          onClick={(e) => {
+            dispatch({ type: "category", payload: ["Electronics", "Mobiles"] });
+            navigate("/productlist-page");
+          }}
         >
           <div className="arrival-img">
             <img
@@ -109,7 +111,7 @@ const Home = () => {
                 <h1>Latest launches</h1>
               </div>{" "}
               <div className="context-desc">
-                Checkout all new upcomong and latest gadgets
+                Checkout all new upcoming and latest gadgets
               </div>
             </div>
           </div>

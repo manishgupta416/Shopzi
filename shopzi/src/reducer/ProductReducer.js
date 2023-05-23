@@ -42,6 +42,14 @@ export const ProductReducer = (state, action) => {
               (item) => item !== action.payload.value
             ),
       };
+
+    case "category":
+      // console.log(action.payload);
+      return {
+        ...state,
+        checkbox: [...action.payload],
+        // console.log(action.payload)
+      };
     default:
       return { ...state };
   }
