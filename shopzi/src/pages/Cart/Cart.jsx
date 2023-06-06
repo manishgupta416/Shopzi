@@ -95,48 +95,50 @@ const Cart = () => {
                 )}
               </div>
 
-              <div className="price-card">
-                <div className="price-items ">
-                  <div className="price">
-                    <h1>Price Details </h1>
-                  </div>{" "}
-                </div>
-                <div className="hr">
-                  <hr />
-                </div>
-                <div className="price-items">
-                  <div className="product-price row-items">
-                    <p>Price ({cart.length}items): </p>
-                    <h3>₹{totalPrice}</h3>
+              {cart.length > 0 && (
+                <div className="price-card">
+                  <div className="price-items ">
+                    <div className="price">
+                      <h1>Price Details </h1>
+                    </div>{" "}
+                  </div>
+                  <div className="hr">
+                    <hr />
+                  </div>
+                  <div className="price-items">
+                    <div className="product-price row-items">
+                      <p>Price ({cart.length}items): </p>
+                      <h3>₹{totalPrice}</h3>
+                    </div>
+                  </div>
+                  <div className="price-items">
+                    <div className="discount-price row-items">
+                      <p>Discount</p>
+                      <h3>₹{discountPrice}</h3>
+                    </div>
+                  </div>
+                  <div className="price-items">
+                    <div className="delivery-charges row-items">
+                      <p>Delivery charges</p>
+                      <h3>Free</h3>
+                    </div>
+                  </div>
+                  <div className="price-items">
+                    <div className="total-price row-items">
+                      <p>Total price</p>
+                      <h3>₹{TotalFinalPrice}</h3>{" "}
+                    </div>
+                  </div>
+                  <div className="hr">
+                    <hr />
+                  </div>
+                  <div className="price-items">
+                    <p>
+                      You will save <b>₹{discountPrice}</b> on this order
+                    </p>
                   </div>
                 </div>
-                <div className="price-items">
-                  <div className="discount-price row-items">
-                    <p>Discount</p>
-                    <h3>₹{discountPrice}</h3>
-                  </div>
-                </div>
-                <div className="price-items">
-                  <div className="delivery-charges row-items">
-                    <p>Delivery charges</p>
-                    <h3>Free</h3>
-                  </div>
-                </div>
-                <div className="price-items">
-                  <div className="total-price row-items">
-                    <p>Total price</p>
-                    <h3>₹{TotalFinalPrice}</h3>{" "}
-                  </div>
-                </div>
-                <div className="hr">
-                  <hr />
-                </div>
-                <div className="price-items">
-                  <p>
-                    You will save <b>₹{discountPrice}</b> on this order
-                  </p>
-                </div>
-              </div>
+              )}
             </div>
           </div>
         </div>

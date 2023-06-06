@@ -43,12 +43,13 @@ const Navbar = () => {
               {" "}
             </i>{" "}
           </NavLink>
-          <NavLink to="/user-profile">
+          <NavLink to="/sign-in">
             {" "}
-            <i
+            {/* <i
               className="fa-regular fa-user fa-2x"
               style={{ color: "white" }}
-            ></i>
+            ></i> */}
+            Login
           </NavLink>
         </div>
       </div>

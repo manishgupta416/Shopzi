@@ -5,6 +5,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import { ProductContext } from "../../context/ProductContext";
 import { CartContext } from "../../context/CartContext";
+import { WishListContext } from "../../context/WishListContext";
 
 const ProductList = () => {
   const {
@@ -19,7 +20,10 @@ const ProductList = () => {
     otherFiltersData,
   } = useContext(ProductContext);
   const navigate = useNavigate();
+
   const { addToCart, item, checkInCart, cart } = useContext(CartContext);
+  const { addToWishList, checkInWishlist, removeFromWishlist } =
+    useContext(WishListContext);
   return (
     <>
       <Navbar />
@@ -348,10 +352,19 @@ const ProductList = () => {
                   <div key={_id}>
                     <img className="product-card-image" src={image} alt="" />
                     <span className="product-card-wishlist card-button">
-                      <i
-                        class="fa-regular fa-heart fa-xl"
-                        style={{ color: "#ff6347" }}
-                      ></i>
+                      {checkInWishlist(image) ? (
+                        <i
+                          onClick={() => removeFromWishlist(image)}
+                          class="fa-solid fa-heart fa-xl"
+                          style={{ color: "#ff6347" }}
+                        ></i>
+                      ) : (
+                        <i
+                          onClick={() => addToWishList(image)}
+                          class="fa-regular fa-heart fa-xl"
+                          style={{ color: "#ff6347" }}
+                        ></i>
+                      )}
                     </span>
                     <div className="rns">
                       <span>
