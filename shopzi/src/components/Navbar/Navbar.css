@@ -1,42 +1,47 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  a,
-  li {
-    list-style-type: none;
-    text-decoration: none;
-    color: white;
-  }
-  
-  .nav {
-    background-color: #ff6347;
-    color: white;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    padding: 1rem;
-    flex-wrap: wrap;
-    gap: 12px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
-  
-  .search-container input {
-    border: 0;
-    border-radius: 20px;
-    padding: 8px 14px;
-    font-size: large;
-  }
-  
-  .nav-right {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    gap: 35px;
-    flex-wrap: wrap;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a,
+li {
+  list-style-type: none;
+  text-decoration: none;
+  color: white;
+}
+
+.nav {
+  background-color: #ff6347;
+  color: white;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 1rem;
+  flex-wrap: wrap;
+  gap: 12px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.search-container input {
+  border: 0;
+  border-radius: 20px;
+  padding: 8px 14px;
+  font-size: large;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 35px;
+  flex-wrap: wrap;
+}
+
+.login-btn {
+  font-size: larger;
+  font-weight: bolder;
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import "./Sign.css";
 import Navbar from "../../components/Navbar/Navbar";
+import { NavLink } from "react-router-dom";
 
 const SignIn = () => {
   return (
@@ -32,10 +33,10 @@ const SignIn = () => {
             <button className="login-button">Login In</button>
             <button className="login-button">Login as Guest</button>
             <div className="login-footer">
-              <p>Already have an account ? </p>
-              <a className="sign-link" href="/">
-                Sign In
-              </a>
+              <p>Don't have an account ? </p>
+              <NavLink className="sign-link" to="/sign-up">
+                Sign Up
+              </NavLink>
             </div>
           </div>
         </div>

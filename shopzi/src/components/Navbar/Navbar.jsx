@@ -43,7 +43,7 @@ const Navbar = () => {
               {" "}
             </i>{" "}
           </NavLink>
-          <NavLink to="/sign-in">
+          <NavLink to="/sign-in" className="login-btn">
             {" "}
             {/* <i
               className="fa-regular fa-user fa-2x"
