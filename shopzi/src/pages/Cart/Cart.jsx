@@ -4,14 +4,14 @@ import "./Cart.css";
 import { CartContext } from "../../context/CartContext";
 const Cart = () => {
   const {
-    cart,
+    cartState,
     totalPrice,
     discountPrice,
     TotalFinalPrice,
-    incQuantity,
-    decQuantity,
+    updateCartQnty,
     removeFromCart,
   } = useContext(CartContext);
+  // console.log(cartState.cart);
   return (
     <>
       <Navbar />
@@ -24,8 +24,8 @@ const Cart = () => {
           <div className="cart contents">
             <div className="cart-container">
               <div className="product-list">
-                {cart.map(
-                  ({
+                {cartState.cart.map((product) => {
+                  const {
                     _id,
                     title,
                     image,
@@ -36,8 +36,9 @@ const Cart = () => {
                     in_stock,
                     review,
                     discount,
-                    quantity,
-                  }) => (
+                    qty,
+                  } = product;
+                  return (
                     <div className="cart-card">
                       <div className="img-container">
                         <img className="cart-img" src={image} alt="img" />
@@ -62,17 +63,17 @@ const Cart = () => {
                           <p>Quantity : </p>
                           <button
                             className="inc"
-                            onClick={() => incQuantity(image)}
+                            onClick={() => updateCartQnty(_id, "increment")}
                           >
                             +
                           </button>
-                          <p> {quantity} </p>
+                          <p> {qty} </p>
                           <button
                             className="dec"
-                            onClick={() => decQuantity(image)}
-                            disabled={quantity === 1}
+                            onClick={() => updateCartQnty(_id, "decrement")}
+                            disabled={qty === 1}
                             style={{
-                              backgroundColor: quantity === 1 ? "gray" : "",
+                              backgroundColor: qty === 1 ? "gray" : "",
                             }}
                           >
                             -
@@ -81,7 +82,7 @@ const Cart = () => {
                         <div className="product-buttons">
                           <button
                             className="cart-button"
-                            onClick={() => removeFromCart(image)}
+                            onClick={() => removeFromCart(_id)}
                           >
                             Remove from cart{" "}
                           </button>
@@ -91,11 +92,11 @@ const Cart = () => {
                         </div>
                       </div>
                     </div>
-                  )
-                )}
+                  );
+                })}
               </div>
 
-              {cart.length > 0 && (
+              {cartState.cart.length > 0 && (
                 <div className="price-card">
                   <div className="price-items ">
                     <div className="price">
@@ -107,7 +108,7 @@ const Cart = () => {
                   </div>
                   <div className="price-items">
                     <div className="product-price row-items">
-                      <p>Price ({cart.length}items): </p>
+                      <p>Price ({cartState.cart.length}items): </p>
                       <h3>₹{totalPrice}</h3>
                     </div>
                   </div>

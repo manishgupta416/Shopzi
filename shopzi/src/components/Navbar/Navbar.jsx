@@ -3,9 +3,11 @@ import { NavLink, useNavigate } from "react-router-dom";
 
 import "./Navbar.css";
 import { ProductContext } from "../../context/ProductContext";
+import { AuthContext } from "../../context/AuthContext";
 
 const Navbar = () => {
   const { state, dispatch } = useContext(ProductContext);
+  const { loginToken } = useContext(AuthContext);
   const navigate = useNavigate();
   return (
     <>
@@ -44,12 +46,14 @@ const Navbar = () => {
             </i>{" "}
           </NavLink>
           <NavLink to="/sign-in" className="login-btn">
-            {" "}
-            {/* <i
-              className="fa-regular fa-user fa-2x"
-              style={{ color: "white" }}
-            ></i> */}
-            Login
+            {loginToken ? (
+              <i
+                className="fa-regular fa-user fa-2x"
+                style={{ color: "white" }}
+              ></i>
+            ) : (
+              "Login"
+            )}
           </NavLink>
         </div>
       </div>

@@ -111,9 +111,34 @@ export const AuthProvider = ({ children }) => {
       });
     }
   };
+
+  const logoutHandler = () => {
+    setCurrentUser(null);
+    setLoginToken(null);
+    localStorage.removeItem("loginDetails");
+
+    toast.success("Logout Successfully!!", {
+      position: "bottom-right",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+
+    navigate(location?.state?.from?.pathname ?? "/");
+  };
   return (
     <AuthContext.Provider
-      value={{ signInHandler, signUpHandler, loginToken, currentUser }}
+      value={{
+        signInHandler,
+        signUpHandler,
+        loginToken,
+        currentUser,
+        logoutHandler,
+      }}
     >
       {children}
     </AuthContext.Provider>

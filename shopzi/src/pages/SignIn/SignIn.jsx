@@ -6,9 +6,11 @@ import "./Sign.css";
 import Navbar from "../../components/Navbar/Navbar";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import UserProfile from "../UserProfile/UserProfile";
 
 const SignIn = () => {
-  const { signInHandler } = useContext(AuthContext);
+  const { signInHandler, loginToken, currentUser } = useContext(AuthContext);
+
   const [userLoginDetails, setUserLoginDetails] = useState({
     email: "",
     password: "",
@@ -45,66 +47,70 @@ const SignIn = () => {
   return (
     <>
       <Navbar />
-      <div className="login-container">
-        <ToastContainer
-          position="bottom-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
-        <div className="login-card">
-          <div className="login-header">
-            <h2>Sign In</h2>
-          </div>
-          <div className="login-items">
-            <div className="input-container">
-              <label htmlFor="input" className="input">
-                Email
-              </label>
-              <input
-                className="login-input"
-                type="email"
-                name="email"
-                onChange={(e) => handleLoginInputs(e, "email")}
-              />
+      {loginToken && currentUser ? (
+        <UserProfile />
+      ) : (
+        <div className="login-container">
+          <ToastContainer
+            position="bottom-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
+          <div className="login-card">
+            <div className="login-header">
+              <h2>Sign In</h2>
             </div>
-          </div>
-          <div className="login-items">
-            {" "}
-            <div className="input-container">
-              <label htmlFor="input" className="input">
-                Password
-              </label>
-              <input
-                className="login-input"
-                type="password"
-                name="password"
-                onChange={(e) => handleLoginInputs(e, "password")}
-              />
+            <div className="login-items">
+              <div className="input-container">
+                <label htmlFor="input" className="input">
+                  Email
+                </label>
+                <input
+                  className="login-input"
+                  type="email"
+                  name="email"
+                  onChange={(e) => handleLoginInputs(e, "email")}
+                />
+              </div>
             </div>
-          </div>
-          <div className="login-items">
-            <button className="login-button" onClick={handleLogin}>
-              Login In
-            </button>
-            <button className="login-button" onClick={handleGuestLogin}>
-              Login as Guest
-            </button>
-            <div className="login-footer">
-              <p>Don't have an account ? </p>
-              <NavLink className="sign-link" to="/sign-up">
-                Sign Up
-              </NavLink>
+            <div className="login-items">
+              {" "}
+              <div className="input-container">
+                <label htmlFor="input" className="input">
+                  Password
+                </label>
+                <input
+                  className="login-input"
+                  type="password"
+                  name="password"
+                  onChange={(e) => handleLoginInputs(e, "password")}
+                />
+              </div>
+            </div>
+            <div className="login-items">
+              <button className="login-button" onClick={handleLogin}>
+                Login In
+              </button>
+              <button className="login-button" onClick={handleGuestLogin}>
+                Login as Guest
+              </button>
+              <div className="login-footer">
+                <p>Don't have an account ? </p>
+                <NavLink className="sign-link" to="/sign-up">
+                  Sign Up
+                </NavLink>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 };

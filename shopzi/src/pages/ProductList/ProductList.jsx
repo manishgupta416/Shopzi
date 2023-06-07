@@ -21,7 +21,7 @@ const ProductList = () => {
   } = useContext(ProductContext);
   const navigate = useNavigate();
 
-  const { addToCart, item, checkInCart, cart } = useContext(CartContext);
+  const { addToCart, checkInCart } = useContext(CartContext);
   const { addToWishList, checkInWishlist, removeFromWishlist } =
     useContext(WishListContext);
   return (
@@ -335,8 +335,8 @@ const ProductList = () => {
             </span>
           </div>
           <div className="product-lists">
-            {otherFiltersData.map(
-              ({
+            {otherFiltersData.map((product) => {
+              const {
                 _id,
                 title,
                 image,
@@ -347,7 +347,8 @@ const ProductList = () => {
                 in_stock,
                 review,
                 discount,
-              }) => (
+              } = product;
+              return (
                 <div className="product-card" key={_id}>
                   <div key={_id}>
                     <img className="product-card-image" src={image} alt="" />
@@ -391,19 +392,19 @@ const ProductList = () => {
                     <div className="product-card-button">
                       <button
                         className="product-button"
-                        onClick={() => addToCart(image)}
+                        onClick={() =>
+                          checkInCart(_id)
+                            ? navigate("/cart")
+                            : addToCart(product)
+                        }
                       >
-                        {checkInCart(image) ? (
-                          <NavLink to="/cart">Go To Cart</NavLink>
-                        ) : (
-                          "Add to Cart"
-                        )}
+                        {checkInCart(_id) ? "Go to Cart" : "Add to Cart"}
                       </button>
                     </div>
                   </div>
                 </div>
-              )
-            )}
+              );
+            })}
           </div>
         </div>
       </div>
