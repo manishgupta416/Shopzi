@@ -353,15 +353,15 @@ const ProductList = () => {
                   <div key={_id}>
                     <img className="product-card-image" src={image} alt="" />
                     <span className="product-card-wishlist card-button">
-                      {checkInWishlist(image) ? (
+                      {checkInWishlist(_id) ? (
                         <i
-                          onClick={() => removeFromWishlist(image)}
+                          onClick={() => removeFromWishlist(_id)}
                           class="fa-solid fa-heart fa-xl"
                           style={{ color: "#ff6347" }}
                         ></i>
                       ) : (
                         <i
-                          onClick={() => addToWishList(image)}
+                          onClick={() => addToWishList(product)}
                           class="fa-regular fa-heart fa-xl"
                           style={{ color: "#ff6347" }}
                         ></i>

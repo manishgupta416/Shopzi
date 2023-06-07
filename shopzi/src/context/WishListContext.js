@@ -1,45 +1,103 @@
-import { Children, createContext, useContext, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
+import axios from "axios";
+
 import { ProductContext } from "./ProductContext";
 import { CartContext } from "./CartContext";
+import {
+  WishlistReducer,
+  initialWishlistState,
+} from "../reducer/WishlistReducer";
+import { AuthContext } from "./AuthContext";
 
 export const WishListContext = createContext();
 export const WishListContextProvider = ({ children }) => {
-  const [wishlist, setWishlist] = useState([]);
-  const { products } = useContext(ProductContext);
-  const { cart } = useContext(CartContext);
+  const [wishlistState, wishlistDispatch] = useReducer(
+    WishlistReducer,
+    initialWishlistState
+  );
 
-  const addToWishList = (selectedImage) => {
-    const isFound = wishlist.findIndex(
-      (product) => product.image === selectedImage
-    );
-    const selectedProduct = products.find(
-      (product) => product.image === selectedImage
-    );
+  const { loginToken } = useContext(AuthContext);
 
-    if (isFound === -1) {
-      setWishlist([...wishlist, { ...selectedProduct, quantity: 1 }]);
+  const getWishlistItems = async () => {
+    try {
+      const response = await axios.get("/api/user/wishlist", {
+        headers: {
+          authorization: loginToken,
+        },
+      });
+
+      console.log(response);
+      wishlistDispatch({
+        type: "getWishlistItems",
+        payload: response?.data?.wishlist,
+      });
+    } catch (error) {
+      console.error(error);
     }
   };
 
-  const removeFromWishlist = (selectedImage) => {
-    setWishlist(
-      wishlist.filter((wishlistItem) => wishlistItem.image !== selectedImage)
+  const checkInWishlist = (productId) => {
+    return wishlistState.wishlist.find(
+      (wishlistItem) => wishlistItem._id === productId
     );
   };
 
-  const checkInWishlist = (image) => {
-    return wishlist.find((cartItem) => cartItem.image === image);
+  const addToWishList = async (productDetails) => {
+    try {
+      const response = await axios.post(
+        "/api/user/wishlist",
+        { product: { ...productDetails } },
+        {
+          headers: {
+            authorization: loginToken,
+          },
+        }
+      );
+      console.log("res", response.data.wishlist);
+      wishlistDispatch({
+        type: "addProductToWishlist",
+        payload: response?.data?.wishlist,
+      });
+    } catch (error) {
+      console.error(error.response);
+    }
   };
 
-  //   const moveToCart=(selImage)=>{
-  //     setWishlist(cart.find(cartItem=> cartItem.image ===selImage)?wishlist.filter(wishlistItem=>wishlistItem.image!==selImage:cart) )
-  //   }
+  const removeFromWishlist = async (productId) => {
+    console.log(productId);
+    try {
+      const response = await axios.delete(`/api/user/wishlist/${productId}`, {
+        headers: {
+          authorization: loginToken,
+        },
+      });
+      console.log(response);
+      wishlistDispatch({
+        type: "removeFromWishlist",
+        payload: response?.data?.wishlist,
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
+  const moveToCart = (selImage) => {};
+
+  useEffect(() => {
+    loginToken && getWishlistItems();
+    // eslint-disable-next-line
+  }, [loginToken]);
   return (
     <WishListContext.Provider
       value={{
         item: 2,
-        wishlist,
+        wishlistState,
         addToWishList,
         removeFromWishlist,
         checkInWishlist,
