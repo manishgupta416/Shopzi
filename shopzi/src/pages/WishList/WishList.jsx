@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import "./WishList.css";
 import { WishListContext } from "../../context/WishListContext";
@@ -8,7 +9,8 @@ import { products } from "../../backend/db/products";
 const WishList = () => {
   const { wishlistState, removeFromWishlist, moveToCart } =
     useContext(WishListContext);
-  //   const { addToCart } = useContext(CartContext);
+  const { checkInCart } = useContext(CartContext);
+  const navigate = useNavigate();
   return (
     <>
       <Navbar />
@@ -62,9 +64,13 @@ const WishList = () => {
                     </button>
                     <button
                       className="cart-button"
-                      onClick={() => moveToCart(product)}
+                      onClick={() =>
+                        checkInCart(_id)
+                          ? navigate("/cart")
+                          : moveToCart(product)
+                      }
                     >
-                      Move to Cart
+                      {checkInCart(_id) ? "Already In Cart" : "Move to Cart"}
                     </button>
                   </div>
                 </div>

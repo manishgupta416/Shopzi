@@ -2,6 +2,8 @@ import React, { useContext, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import "./Cart.css";
 import { CartContext } from "../../context/CartContext";
+import { WishListContext } from "../../context/WishListContext";
+import { useNavigate } from "react-router-dom";
 const Cart = () => {
   const {
     cartState,
@@ -12,6 +14,9 @@ const Cart = () => {
     removeFromCart,
   } = useContext(CartContext);
   // console.log(cartState.cart);
+  const navigate = useNavigate();
+  const { checkInWishlist, moveTowishlist } = useContext(WishListContext);
+
   return (
     <>
       <Navbar />
@@ -86,8 +91,17 @@ const Cart = () => {
                           >
                             Remove from cart{" "}
                           </button>
-                          <button className="cart-button">
-                            Move to wishlist
+                          <button
+                            className="cart-button"
+                            onClick={
+                              checkInWishlist(_id)
+                                ? navigate("/wishlist")
+                                : moveTowishlist(product)
+                            }
+                          >
+                            {checkInWishlist(_id)
+                              ? "Already In Wishlist"
+                              : "Move to wishlist"}
                           </button>
                         </div>
                       </div>

@@ -6,6 +6,7 @@ import Footer from "../../components/Footer/Footer";
 import { ProductContext } from "../../context/ProductContext";
 import { CartContext } from "../../context/CartContext";
 import { WishListContext } from "../../context/WishListContext";
+import { AuthContext } from "../../context/AuthContext";
 
 const ProductList = () => {
   const {
@@ -24,6 +25,7 @@ const ProductList = () => {
   const { addToCart, checkInCart } = useContext(CartContext);
   const { addToWishList, checkInWishlist, removeFromWishlist } =
     useContext(WishListContext);
+  const { loginToken } = useContext(AuthContext);
   return (
     <>
       <Navbar />
@@ -361,7 +363,11 @@ const ProductList = () => {
                         ></i>
                       ) : (
                         <i
-                          onClick={() => addToWishList(product)}
+                          onClick={() =>
+                            loginToken
+                              ? addToWishList(product)
+                              : navigate("/sign-in")
+                          }
                           class="fa-regular fa-heart fa-xl"
                           style={{ color: "#ff6347" }}
                         ></i>
@@ -392,11 +398,13 @@ const ProductList = () => {
                     <div className="product-card-button">
                       <button
                         className="product-button"
-                        onClick={() =>
-                          checkInCart(_id)
-                            ? navigate("/cart")
-                            : addToCart(product)
-                        }
+                        onClick={() => {
+                          loginToken
+                            ? checkInCart(_id)
+                              ? navigate("/cart")
+                              : addToCart(product)
+                            : navigate("/sign-in");
+                        }}
                       >
                         {checkInCart(_id) ? "Go to Cart" : "Add to Cart"}
                       </button>

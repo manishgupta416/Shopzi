@@ -88,7 +88,7 @@ export const WishListContextProvider = ({ children }) => {
   };
 
   const moveToCart = (selImage) => {};
-
+  const moveTowishlist = () => {};
   useEffect(() => {
     loginToken && getWishlistItems();
     // eslint-disable-next-line
@@ -101,7 +101,8 @@ export const WishListContextProvider = ({ children }) => {
         addToWishList,
         removeFromWishlist,
         checkInWishlist,
-        // moveToCart,
+        moveToCart,
+        moveTowishlist,
       }}
     >
       {" "}
