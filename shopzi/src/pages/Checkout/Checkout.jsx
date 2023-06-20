@@ -16,7 +16,7 @@ const Checkout = () => {
   const { addressData, setOrderPesponseDetails } = useContext(AddressContext);
 
   //razorpay paymnet integration
-
+  //Todo :clear cart after order placed
   const handlePayment = () => {
     if (Object.keys(orderAddress).length === 0) {
       alert("Please select address");
