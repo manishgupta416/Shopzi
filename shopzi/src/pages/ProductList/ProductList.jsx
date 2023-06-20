@@ -353,7 +353,9 @@ const ProductList = () => {
               return (
                 <div className="product-card" key={_id}>
                   <div key={_id}>
-                    <img className="product-card-image" src={image} alt="" />
+                    <NavLink to={`/product-details/${_id}`}>
+                      <img className="product-card-image" src={image} alt="" />
+                    </NavLink>
                     <span className="product-card-wishlist card-button">
                       {checkInWishlist(_id) ? (
                         <i

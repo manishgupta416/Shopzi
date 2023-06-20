@@ -1,0 +1,21 @@
+.product-details-container {
+  display: flex;
+  margin-top: 6rem;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+}
+.btn-row {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.img-single {
+  object-fit: contain;
+  width: 300px;
+}
+.item-row {
+  display: flex;
+  gap: 15px;
+}

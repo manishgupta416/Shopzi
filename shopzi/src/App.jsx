@@ -14,6 +14,7 @@ import UserProfile from "./pages/UserProfile/UserProfile";
 import Checkout from "./pages/Checkout/Checkout";
 import OrderSummary from "./pages/Order_Summary/OrderSummary";
 import PageNotFound from "./pages/404/404";
+import ProductDetails from "./pages/Product_Details/ProductDetails";
 
 const App = () => {
   return (
@@ -77,6 +78,10 @@ const App = () => {
           }
         />
         <Route path="*" element={<PageNotFound />} />
+        <Route
+          path="product-details/:selectedId"
+          element={<ProductDetails />}
+        />
       </Routes>
     </>
   );
