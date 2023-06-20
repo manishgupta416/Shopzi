@@ -30,6 +30,10 @@ const Navbar = () => {
           />
         </div>
         <div className="nav-right">
+          <NavLink to="/productlist-page">
+            <i class="fa-solid fa-store fa-2x" style={{ color: " white" }}></i>
+          </NavLink>
+
           <NavLink to="/wishlist">
             <i
               className="fa-sharp fa-regular fa-heart fa-2x"
