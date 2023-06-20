@@ -126,13 +126,13 @@ const Address = () => {
         return (
           <div className="address-details-container">
             <div className="address-details" key={id}>
-              <strong>{name}</strong>
-              <p>{mobile}</p>
-              <p>{street}</p>
-              <p>{city}</p>
-              <span>{state}</span>
-              <span>{country}</span>
-              <p>{pinCode}</p>
+              <strong>Name - {name}</strong>
+              <p>Mobile - {mobile}</p>
+              <p>Street - {street}</p>
+              <p>City - {city}</p>
+              <span>State - {state}</span>
+              <span>Country - {country}</span>
+              <p>Pin code - {pinCode}</p>
             </div>
             <div className="btns">
               <button onClick={() => handleEditAddress(id, addressdetails)}>

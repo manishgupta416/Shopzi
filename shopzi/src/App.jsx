@@ -12,6 +12,7 @@ import SignUp from "./pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import UserProfile from "./pages/UserProfile/UserProfile";
 import Checkout from "./pages/Checkout/Checkout";
+import OrderSummary from "./pages/Order_Summary/OrderSummary";
 const App = () => {
   return (
     <>
@@ -62,6 +63,14 @@ const App = () => {
           element={
             <PrivateRoute>
               <Checkout />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/order-summary"
+          element={
+            <PrivateRoute>
+              <OrderSummary />
             </PrivateRoute>
           }
         />

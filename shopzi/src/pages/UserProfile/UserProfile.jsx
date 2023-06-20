@@ -7,7 +7,7 @@ import Address from "../Address/Address";
 const UserProfile = () => {
   const { currentUser, logoutHandler } = useContext(AuthContext);
   console.log("curr", currentUser);
-  const [showDetails, setShowDetails] = useState(false);
+  const [showDetails, setShowDetails] = useState("profile");
   const showProfile = (tabName) => {
     setShowDetails(tabName);
   };

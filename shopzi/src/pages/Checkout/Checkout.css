@@ -10,6 +10,8 @@
 .checkout-container {
   display: flex;
   gap: 13px;
+  justify-content: center;
+  align-items: center;
 }
 .address-container {
   display: flex;

@@ -1,0 +1,22 @@
+.summary-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 6rem;
+}
+.summary-main-container {
+  display: flex;
+  gap: 10px;
+}
+
+.summary-left {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid tomato;
+}
+.summary-right {
+  width: 300px;
+  border: 2px solid tomato;
+}

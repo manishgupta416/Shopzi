@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import "./Checkout.css";
 import { CartContext } from "../../context/CartContext";
 import Navbar from "../../components/Navbar/Navbar";
@@ -7,14 +7,11 @@ import Address from "../Address/Address";
 import { AddressContext } from "../../context/AddressContext";
 
 const Checkout = () => {
+  const navigate = useNavigate();
   const { cartState, totalPrice, discountPrice, TotalFinalPrice } =
     useContext(CartContext);
-  const [orderAddress, setOrderAddress] = useState({});
-  const handleOrderAddress = (address) => {
-    setOrderAddress({
-      ...address,
-    });
-  };
+  const { orderAddress, handleOrderAddress } = useContext(AddressContext);
+
   console.log(orderAddress);
   const { addressData } = useContext(AddressContext);
   return (
@@ -24,6 +21,15 @@ const Checkout = () => {
         <h1>Checkout</h1>
         <div className="checkout-container">
           <div className="">
+            {" "}
+            {addressData.length === 0 && (
+              <button
+                onClick={() => navigate("/user-profile")}
+                className="cart-button"
+              >
+                Add Address
+              </button>
+            )}
             {addressData?.map((addressDetails) => {
               const {
                 id,
@@ -102,18 +108,20 @@ const Checkout = () => {
                   You will save <b>₹{discountPrice}</b> on this order
                 </p>
               </div>
-              <div className="deliver-details">
-                <h4>Deliver to</h4>
-                <strong>{orderAddress.name}</strong>{" "}
-                <div className="address-details-checkout">
-                  <p>
-                    {orderAddress.street}, {orderAddress.city},
-                    {orderAddress.state}. {orderAddress.pinCode}
-                  </p>
-                  <p>{orderAddress.country}.</p>
-                  <p>Mobile Number : {orderAddress.mobile}</p>
+              {Object.keys(orderAddress).length !== 0 && (
+                <div className="deliver-details">
+                  <h4>Deliver to</h4>
+                  <strong>{orderAddress?.name}</strong>{" "}
+                  <div className="address-details-checkout">
+                    <p>
+                      {orderAddress?.street}, {orderAddress?.city},
+                      {orderAddress?.state}. {orderAddress?.pinCode}
+                    </p>
+                    <p>{orderAddress.country}.</p>
+                    <p>Mobile Number : {orderAddress?.mobile}</p>
+                  </div>
                 </div>
-              </div>
+              )}
               <button
                 // onClick={() => navigate("/checkout")}
                 className="cart-button"

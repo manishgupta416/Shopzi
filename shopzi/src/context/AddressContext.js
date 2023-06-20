@@ -3,6 +3,12 @@ import { createContext, useState, useEffect } from "react";
 export const AddressContext = createContext();
 
 export const AddressContextProvider = ({ children }) => {
+  const [orderAddress, setOrderAddress] = useState({});
+  const handleOrderAddress = (address) => {
+    setOrderAddress({
+      ...address,
+    });
+  };
   const [addressData, setAddressData] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [updateButton, setUpdateButton] = useState(false);
@@ -128,6 +134,8 @@ export const AddressContextProvider = ({ children }) => {
         handleEditAddress,
         updateHandler,
         updateButton,
+        orderAddress,
+        handleOrderAddress,
       }}
     >
       {children}
