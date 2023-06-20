@@ -14,6 +14,11 @@ const Checkout = () => {
 
   console.log(orderAddress);
   const { addressData } = useContext(AddressContext);
+  const handlePayment = () => {
+    if (Object.keys(orderAddress).length === 0) {
+      alert("j");
+    }
+  };
   return (
     <>
       <Navbar />
@@ -124,6 +129,7 @@ const Checkout = () => {
               )}
               <button
                 // onClick={() => navigate("/checkout")}
+                onClick={handlePayment}
                 className="cart-button"
               >
                 Place Order

@@ -5,9 +5,11 @@ export const AddressContext = createContext();
 export const AddressContextProvider = ({ children }) => {
   const [orderAddress, setOrderAddress] = useState({});
   const handleOrderAddress = (address) => {
-    setOrderAddress({
-      ...address,
-    });
+    addressData.length !== 0
+      ? setOrderAddress({
+          ...address,
+        })
+      : setOrderAddress({});
   };
   const [addressData, setAddressData] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
