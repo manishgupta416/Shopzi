@@ -152,6 +152,12 @@ const Cart = () => {
                       You will save <b>₹{discountPrice}</b> on this order
                     </p>
                   </div>
+                  <button
+                    onClick={() => navigate("/checkout")}
+                    className="cart-button"
+                  >
+                    CheckOut
+                  </button>
                 </div>
               )}
             </div>
