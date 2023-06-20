@@ -8,21 +8,21 @@ const UserProfile = () => {
   const { currentUser, logoutHandler } = useContext(AuthContext);
   console.log("curr", currentUser);
   const [showDetails, setShowDetails] = useState(false);
-  const showProfile = () => {
-    setShowDetails(!showDetails);
+  const showProfile = (tabName) => {
+    setShowDetails(tabName);
   };
-  const showAddress = () => {
-    setShowDetails(!showDetails);
+  const showAddress = (tabName) => {
+    setShowDetails(tabName);
   };
   return (
     <>
       <Navbar />
       <div className="main-profile">
         <div className="profile-tabs">
-          <button onClick={showProfile}>Profile</button>
-          <button onClick={showAddress}>Address</button>
+          <button onClick={() => showProfile("profile")}>Profile</button>
+          <button onClick={() => showAddress("address")}>Address</button>
         </div>
-        {showDetails ? (
+        {showDetails === "profile" ? (
           <div className="profile-container">
             <div className="profile-items">
               <div className="profile-details">

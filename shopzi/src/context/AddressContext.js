@@ -35,6 +35,7 @@ export const AddressContextProvider = ({ children }) => {
     ) {
       setAddressData([...addressData, addressForm]);
       setIsOpen(false);
+      handleReset();
       console.log(addressData);
     } else {
       alert("Every input fileds must be filled");
