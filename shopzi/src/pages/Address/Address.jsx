@@ -99,7 +99,7 @@ const Address = () => {
           <div className="address-items">
             <div className="button-container">
               {updateButton ? (
-                <button className="address-btns" onClick={addAddress}>
+                <button className="address-btns" onClick={updateHandler}>
                   Update
                 </button>
               ) : (

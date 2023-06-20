@@ -6,6 +6,7 @@ export const AddressContextProvider = ({ children }) => {
   const [addressData, setAddressData] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [updateButton, setUpdateButton] = useState(false);
+  const [selectedId, setSelectedId] = useState(null); // this id will used while edit on updatting address
   const [addressForm, setAddressForm] = useState({
     id: Date.now(),
     name: "",
@@ -84,10 +85,11 @@ export const AddressContextProvider = ({ children }) => {
     setIsOpen(true);
     setAddressForm({ ...addressdetails });
     setUpdateButton(true);
+    setSelectedId(id);
   };
-  const updateHandler = (selectedId) => {
+  const updateHandler = () => {
     const UpdatedAddress = addressData.map((address) =>
-      address.id === selectedId ? { addressForm } : address
+      address.id === selectedId ? { ...addressForm } : address
     );
     setAddressData([...UpdatedAddress]);
     setAddressForm({
