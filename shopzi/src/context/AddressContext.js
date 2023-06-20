@@ -3,6 +3,10 @@ import { createContext, useState, useEffect } from "react";
 export const AddressContext = createContext();
 
 export const AddressContextProvider = ({ children }) => {
+  const [orderResponseDetails, setOrderPesponseDetails] = useState({
+    msg: false,
+    id: null,
+  });
   const [orderAddress, setOrderAddress] = useState({});
   const handleOrderAddress = (address) => {
     addressData.length !== 0
@@ -120,6 +124,7 @@ export const AddressContextProvider = ({ children }) => {
       console.log(addressData);
     }
   }, [addressData]);
+
   return (
     <AddressContext.Provider
       value={{
@@ -138,6 +143,8 @@ export const AddressContextProvider = ({ children }) => {
         updateButton,
         orderAddress,
         handleOrderAddress,
+        orderResponseDetails,
+        setOrderPesponseDetails,
       }}
     >
       {children}

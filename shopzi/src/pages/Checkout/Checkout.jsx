@@ -13,12 +13,55 @@ const Checkout = () => {
   const { orderAddress, handleOrderAddress } = useContext(AddressContext);
 
   console.log(orderAddress);
-  const { addressData } = useContext(AddressContext);
+  const { addressData, setOrderPesponseDetails } = useContext(AddressContext);
+
+  //razorpay paymnet integration
+
   const handlePayment = () => {
     if (Object.keys(orderAddress).length === 0) {
-      alert("j");
+      alert("Please select address");
+    } else {
+      var option = {
+        key: "rzp_test_Rt5OK3cO03Xqy3",
+        key_secret: "IkwU985fiQNoVR2aITqumWaG",
+        amount: Number(TotalFinalPrice) * 100,
+        currency: "INR",
+        name: "Shopzi",
+        description: "Purchase",
+        handler: function (response) {
+          if (response.razorpay_payment_id) {
+            // Payment successful
+            console.log(response);
+            setOrderPesponseDetails({
+              msg: true,
+              id: response.razorpay_payment_id,
+            });
+            alert("Payment successful!");
+            navigate("/order-summary");
+          } else if (response.error) {
+            // Payment failed or cancelled
+            console.log(response.error);
+            alert("Payment failed or cancelled.");
+          }
+        },
+
+        prefill: {
+          name: "Manish Gupta",
+          email: "manish.info2020@gmail.com",
+          contact: "7739464193",
+        },
+        notes: {
+          address: "123, Main Street Bengalore",
+        },
+        theme: {
+          color: "#ff6347",
+        },
+      };
+      var pay = new window.Razorpay(option);
+      pay.open();
     }
   };
+
   return (
     <>
       <Navbar />
