@@ -7,6 +7,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import UserProfile from "../UserProfile/UserProfile";
+import Address from "../Address/Address";
 
 const SignIn = () => {
   const { signInHandler, loginToken, currentUser } = useContext(AuthContext);
@@ -47,8 +48,12 @@ const SignIn = () => {
   return (
     <>
       <Navbar />
+
       {loginToken && currentUser ? (
-        <UserProfile />
+        <>
+          {" "}
+          <UserProfile />
+        </>
       ) : (
         <div className="login-container">
           <ToastContainer

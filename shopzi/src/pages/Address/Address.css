@@ -1,0 +1,81 @@
+.main-address-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin: 4rem; */
+  /* min-height: 100vh; */
+  flex-direction: column;
+  padding: 2rem;
+}
+.address-container {
+  display: flex;
+  /* flex-direction: column; */
+  /* align-items: center; */
+}
+
+.address-items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.address-footer {
+  display: flex;
+  flex-direction: column;
+}
+.address-input-container {
+  display: flex;
+  flex-direction: column;
+}
+.button-container {
+  display: flex;
+  gap: 10px;
+  margin: 12px;
+}
+
+.address-input {
+  padding: 10px 15px;
+  border: 1px solid grey;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+.address-btns {
+  padding: 10px 15px;
+  margin: 10px 0;
+  border: 0 solid tomato;
+  background-color: tomato;
+  color: white;
+  font-size: large;
+  cursor: pointer;
+}
+
+.address-details {
+  gap: 10px;
+  flex-direction: column;
+  display: flex;
+  padding: 20px;
+}
+
+.address-details-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  margin: 5px;
+  padding: 10px;
+  border: 2px solid tomato;
+}
+.btns {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.btns button,
+.add-address-btn {
+  padding: 10px 15px;
+  margin: 10px 0;
+  border: 0 solid tomato;
+  background-color: tomato;
+  color: white;
+  font-size: large;
+  cursor: pointer;
+}
