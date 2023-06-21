@@ -17,14 +17,18 @@ const Navbar = () => {
             <h2 className="nav-header">Shopzi</h2>
           </NavLink>
         </div>
-        <div className="search-container">
+        <div
+          className="search-container"
+          onClick={() => navigate("/productlist-page")}
+        >
           <input
-            onChange={(e) =>
+            onChange={(e) => {
               dispatch({
                 type: "search",
                 payload: e.target.value.toLowerCase(),
-              })
-            }
+              });
+              // navigate("/productlist-page");
+            }}
             type="text"
             placeholder="search products"
           />
