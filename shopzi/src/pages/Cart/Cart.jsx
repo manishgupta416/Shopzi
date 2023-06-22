@@ -4,6 +4,7 @@ import "./Cart.css";
 import { CartContext } from "../../context/CartContext";
 import { WishListContext } from "../../context/WishListContext";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 const Cart = () => {
   const {
     cartState,
@@ -15,8 +16,22 @@ const Cart = () => {
   } = useContext(CartContext);
   // console.log(cartState.cart);
   const navigate = useNavigate();
-  const { checkInWishlist, moveTowishlist } = useContext(WishListContext);
+  const { checkInWishlist, moveTowishlist, addToWishList } =
+    useContext(WishListContext);
+  const { loginToken } = useContext(AuthContext);
 
+  const handleAddToWishlist = (selcId, product) => {
+    if (loginToken) {
+      const productInCart = checkInWishlist(selcId);
+      if (!productInCart) {
+        addToWishList(product);
+        removeFromCart(selcId);
+      }
+      navigate("/wishlist");
+    } else {
+      navigate("/sign-in");
+    }
+  };
   return (
     <>
       <Navbar />
@@ -93,11 +108,7 @@ const Cart = () => {
                           </button>
                           <button
                             className="cart-button"
-                            onClick={
-                              checkInWishlist(_id)
-                                ? navigate("/wishlist")
-                                : moveTowishlist(product)
-                            }
+                            onClick={() => handleAddToWishlist(_id, product)}
                           >
                             {checkInWishlist(_id)
                               ? "Already In Wishlist"

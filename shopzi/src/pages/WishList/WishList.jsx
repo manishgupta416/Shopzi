@@ -5,12 +5,27 @@ import "./WishList.css";
 import { WishListContext } from "../../context/WishListContext";
 import { CartContext } from "../../context/CartContext";
 import { products } from "../../backend/db/products";
+import { AuthContext } from "../../context/AuthContext";
 
 const WishList = () => {
-  const { wishlistState, removeFromWishlist, moveToCart } =
-    useContext(WishListContext);
-  const { checkInCart } = useContext(CartContext);
+  const { wishlistState, removeFromWishlist } = useContext(WishListContext);
+  const { checkInCart, addToCart } = useContext(CartContext);
+  const { loginToken } = useContext(AuthContext);
   const navigate = useNavigate();
+
+  const handleAddToCart = (selcId, product) => {
+    if (loginToken) {
+      const productInCart = checkInCart(selcId);
+      if (!productInCart) {
+        addToCart(product);
+        removeFromWishlist(selcId);
+      }
+      navigate("/cart");
+    } else {
+      navigate("/sign-in");
+    }
+  };
+
   return (
     <>
       <Navbar />
@@ -64,11 +79,7 @@ const WishList = () => {
                     </button>
                     <button
                       className="cart-button"
-                      onClick={() =>
-                        checkInCart(_id)
-                          ? navigate("/cart")
-                          : moveToCart(product)
-                      }
+                      onClick={() => handleAddToCart(_id, product)}
                     >
                       {checkInCart(_id) ? "Already In Cart" : "Move to Cart"}
                     </button>
