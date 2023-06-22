@@ -151,7 +151,6 @@
   justify-content: space-between;
   border-radius: 0.375rem;
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
 }
 .product-card-image {
   height: 249px;
@@ -160,6 +159,7 @@
   /* object-position: top center; */
   border-radius: 0.375rem;
   /* position: relative; */
+  cursor: pointer;
 }
 .product-card-content {
   display: flex;
@@ -213,6 +213,7 @@
   border-radius: 10px;
   border: 2px solid;
   text-transform: capitalize;
+  cursor: pointer;
 }
 .size {
   margin-left: auto;
