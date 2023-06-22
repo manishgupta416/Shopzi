@@ -21,10 +21,11 @@ const Checkout = () => {
     if (Object.keys(orderAddress).length === 0) {
       alert("Please select address");
     } else {
+      const totalPriceInPaise = Math.round(Number(TotalFinalPrice) * 100);
       var option = {
         key: "rzp_test_Rt5OK3cO03Xqy3",
         key_secret: "IkwU985fiQNoVR2aITqumWaG",
-        amount: Number(TotalFinalPrice) * 100,
+        amount: totalPriceInPaise,
         currency: "INR",
         name: "Shopzi",
         description: "Purchase",
