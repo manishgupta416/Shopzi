@@ -418,7 +418,9 @@ const ProductList = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      <div className="footer-in-store">
+        <Footer />
+      </div>
     </>
   );
 };

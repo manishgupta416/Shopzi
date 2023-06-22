@@ -26,6 +26,7 @@
   height: 100%;
   left: 0;
   top: 69px;
+  z-index: 0;
   /* fixed esliye taki hm scroll kar skte , height dene pe scroll kar payenge */
 }
 #scrollbar::-webkit-scrollbar-track {
@@ -231,4 +232,8 @@
   padding: 1px 5px;
   color: white;
   border-radius: 5px;
+}
+.footer-in-store {
+  position: relative;
+  z-index: 55;
 }
