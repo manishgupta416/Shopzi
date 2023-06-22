@@ -1,14 +1,47 @@
 import React, { useContext } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useParams, useNavigate } from "react-router-dom";
 import "./ProductDetails.css";
 import { ProductContext } from "../../context/ProductContext";
 import Navbar from "../../components/Navbar/Navbar";
+import { CartContext } from "../../context/CartContext";
+import { AuthContext } from "../../context/AuthContext";
+import { WishListContext } from "../../context/WishListContext";
 
 const ProductDetails = () => {
   const { products } = useContext(ProductContext);
   const { selectedId } = useParams();
   const selectedProduct = products.find(({ _id }) => _id === selectedId);
   console.log(selectedProduct);
+  const { addToCart, checkInCart } = useContext(CartContext);
+  const { addToWishList, checkInWishlist, removeFromWishlist } =
+    useContext(WishListContext);
+  const { loginToken } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
+  const handleAddToWishlist = () => {
+    if (loginToken) {
+      if (checkInWishlist(selectedProduct?._id)) {
+        removeFromWishlist(selectedProduct?._id);
+      } else {
+        addToWishList(selectedProduct);
+      }
+    } else {
+      navigate("/sign-in");
+    }
+  };
+
+  const handleAddToCart = () => {
+    if (loginToken) {
+      if (checkInCart(selectedProduct?._id)) {
+        navigate("/cart");
+      } else {
+        addToCart(selectedProduct);
+      }
+    } else {
+      navigate("/sign-in");
+    }
+  };
   return (
     <div>
       <Navbar />
@@ -54,29 +87,15 @@ const ProductDetails = () => {
           </div>
 
           <div className="product-card-button btn-row">
-            <button
-              className="product-button"
-              onClick={() => {
-                //   loginToken
-                //     ? checkInCart(_id)
-                //       ? navigate("/cart")
-                //       : addToCart(product)
-                //     : navigate("/sign-in");
-              }}
-            >
-              Add to Wishlist
+            <button className="product-button" onClick={handleAddToWishlist}>
+              {loginToken && checkInWishlist(selectedProduct?._id)
+                ? "Remove From Wishlist"
+                : "Add to Wishlist"}
             </button>
-            <button
-              className="product-button "
-              onClick={() => {
-                //   loginToken
-                //     ? checkInCart(_id)
-                //       ? navigate("/cart")
-                //       : addToCart(product)
-                //     : navigate("/sign-in");
-              }}
-            >
-              Add to Cart
+            <button className="product-button " onClick={handleAddToCart}>
+              {loginToken && checkInCart(selectedProduct?._id)
+                ? "Go to Cart"
+                : "Add to Cart"}
             </button>
           </div>
         </div>
