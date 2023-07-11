@@ -439,9 +439,7 @@ const ProductList = () => {
           </div>
         </div>
       )}
-      <div className="footer-in-store">
-        <Footer />
-      </div>
+      <div className="footer-in-store">{/* <Footer /> */}</div>
     </>
   );
 };
