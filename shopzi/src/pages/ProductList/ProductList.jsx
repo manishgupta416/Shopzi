@@ -363,7 +363,7 @@ const ProductList = () => {
                   price,
                   original_price,
                   in_stock,
-                  review,
+                  reviews,
                   discount,
                 } = product;
                 return (
@@ -403,8 +403,7 @@ const ProductList = () => {
                           ></i>
                         </span>
                         <span className="rating">{rating}</span>
-                        <p className="">{review}</p>
-                        <span className="size ">{size}</span>
+                        <span className="size ">{reviews}</span>
                       </div>
                     </div>
 
