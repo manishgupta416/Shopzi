@@ -14,6 +14,8 @@ import {
   initialWishlistState,
 } from "../reducer/WishlistReducer";
 import { AuthContext } from "./AuthContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const WishListContext = createContext();
 export const WishListContextProvider = ({ children }) => {
@@ -64,6 +66,16 @@ export const WishListContextProvider = ({ children }) => {
         type: "addProductToWishlist",
         payload: response?.data?.wishlist,
       });
+      toast.success(`Added to Wishlist`, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     } catch (error) {
       console.error(error.response);
     }
@@ -82,13 +94,21 @@ export const WishListContextProvider = ({ children }) => {
         type: "removeFromWishlist",
         payload: response?.data?.wishlist,
       });
+      toast.success(`Removed from Wishlist`, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     } catch (error) {
       console.error(error);
     }
   };
 
-  const moveToCart = (selImage) => {};
-  const moveTowishlist = () => {};
   useEffect(() => {
     loginToken && getWishlistItems();
     // eslint-disable-next-line
@@ -101,8 +121,6 @@ export const WishListContextProvider = ({ children }) => {
         addToWishList,
         removeFromWishlist,
         checkInWishlist,
-        moveToCart,
-        moveTowishlist,
       }}
     >
       {" "}

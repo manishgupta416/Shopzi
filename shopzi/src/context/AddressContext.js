@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export const AddressContext = createContext();
 
 export const AddressContextProvider = ({ children }) => {
@@ -48,9 +49,28 @@ export const AddressContextProvider = ({ children }) => {
       setAddressData([...addressData, addressForm]);
       setIsOpen(false);
       handleReset();
+      toast.success(`Address added successfully.`, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
       console.log(addressData);
     } else {
-      alert("Every input fileds must be filled");
+      toast.warning(`Please fill in all the required fields`, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
   };
 
@@ -92,6 +112,16 @@ export const AddressContextProvider = ({ children }) => {
   };
   const handleDelete = (selectedAddId) => {
     setAddressData([...addressData.filter(({ id }) => id !== selectedAddId)]);
+    toast.success(`Address removed successfully`, {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   };
 
   const handleEditAddress = (id, addressdetails) => {
@@ -117,6 +147,16 @@ export const AddressContextProvider = ({ children }) => {
     });
     setIsOpen(false);
     setUpdateButton(false);
+    toast.success(`Address Updated successfully`, {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   };
   useEffect(() => {
     //  whenever data changes

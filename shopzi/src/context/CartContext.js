@@ -9,6 +9,8 @@ import axios from "axios";
 
 import { AuthContext } from "./AuthContext";
 import { CartReducer, initialCartState } from "../reducer/CartReducer";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const CartContext = createContext();
 
@@ -52,6 +54,16 @@ export const CartContextProvider = ({ children }) => {
       );
       console.log("res", response.data.cart);
       cartDispatch({ type: "addProductToCart", payload: response?.data?.cart });
+      toast.success("Added to Cart", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     } catch (error) {
       console.error(error.response);
     }
@@ -67,6 +79,16 @@ export const CartContextProvider = ({ children }) => {
       });
       console.log(response);
       cartDispatch({ type: "removeFromcart", payload: response?.data?.cart });
+      toast.success("Removed from Cart", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     } catch (error) {
       console.error(error);
     }
@@ -90,6 +112,16 @@ export const CartContextProvider = ({ children }) => {
       );
       console.log(response);
       cartDispatch({ type: "updateCartQnty", payload: response?.data?.cart });
+      toast.success(`Product quantity ${actionType}ed`, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     } catch (error) {
       console.error(error);
     }
