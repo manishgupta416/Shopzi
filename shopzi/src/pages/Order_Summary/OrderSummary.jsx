@@ -13,7 +13,9 @@ const OrderSummary = () => {
       <Navbar />
       {orderResponseDetails && (
         <div className="summary-container">
-          <h2 className="summary-header">Your order has successfully placed</h2>
+          <h2 className="summary-header">
+            Your order has been successfully placed
+          </h2>
           <div className="summary-main-container">
             {Object.keys(orderAddress).length !== 0 && (
               <div className="summary-left">

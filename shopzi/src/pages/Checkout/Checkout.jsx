@@ -1,5 +1,8 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import "./Checkout.css";
 import { CartContext } from "../../context/CartContext";
 import Navbar from "../../components/Navbar/Navbar";
@@ -19,7 +22,16 @@ const Checkout = () => {
   //Todo :clear cart after order placed
   const handlePayment = () => {
     if (Object.keys(orderAddress).length === 0) {
-      alert("Please select address");
+      toast.warning(`Please select address`, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     } else {
       const totalPriceInPaise = Math.round(Number(TotalFinalPrice) * 100);
       var option = {
@@ -37,7 +49,16 @@ const Checkout = () => {
               msg: true,
               id: response.razorpay_payment_id,
             });
-            alert("Payment successful!");
+            toast.success(`Order placed successfully`, {
+              position: "bottom-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            });
             navigate("/order-summary");
           } else if (response.error) {
             // Payment failed or cancelled
@@ -90,12 +111,15 @@ const Checkout = () => {
                 pinCode,
                 mobile,
               } = addressDetails;
+              // Generate a unique id for each radio button
+              const radioBtnId = `oa-radio-btn-${id}`;
               return (
                 <div className="address-container">
-                  <label htmlFor="radio">
+                  <label htmlFor={radioBtnId}>
                     <input
                       type="radio"
                       name="radio"
+                      id={radioBtnId}
                       className="address-radio-btn"
                       checked={orderAddress.id === id}
                       onChange={() => handleOrderAddress(addressDetails)}
