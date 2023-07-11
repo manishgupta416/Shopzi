@@ -62,7 +62,7 @@ const ProductList = () => {
                 {" "}
                 <p>0</p>
                 <p>50000</p>
-                <p>111111</p>
+                <p>150000</p>
               </div>
               <input
                 type="range"
