@@ -18,6 +18,7 @@ export const ProductProvider = ({ children }) => {
   });
   console.log(state.sort);
   console.log(state.checkbox);
+  const [isLoading, setIsLoading] = useState(true);
   const getAllProducts = async () => {
     const res = await fetch("/api/products");
     const resData = await res.json();
@@ -101,6 +102,8 @@ export const ProductProvider = ({ children }) => {
         sortFilteredData,
         rangeFilteredProducts,
         otherFiltersData,
+        isLoading,
+        setIsLoading,
       }}
     >
       {children}
