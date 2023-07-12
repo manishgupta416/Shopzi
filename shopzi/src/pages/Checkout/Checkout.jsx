@@ -11,8 +11,13 @@ import { AddressContext } from "../../context/AddressContext";
 
 const Checkout = () => {
   const navigate = useNavigate();
-  const { cartState, totalPrice, discountPrice, TotalFinalPrice } =
-    useContext(CartContext);
+  const {
+    cartState,
+    totalPrice,
+    discountPrice,
+    TotalFinalPrice,
+    cartDispatch,
+  } = useContext(CartContext);
   const { orderAddress, handleOrderAddress } = useContext(AddressContext);
 
   console.log(orderAddress);
@@ -60,6 +65,10 @@ const Checkout = () => {
               theme: "light",
             });
             navigate("/order-summary");
+            cartDispatch({
+              type: "clearCart",
+              payload: [...cartState.cart],
+            });
           } else if (response.error) {
             // Payment failed or cancelled
             console.log(response.error);

@@ -13,9 +13,24 @@ export const CartReducer = (state, action) => {
     case "updateCartQnty":
       return { ...state, cart: action.payload };
 
+    case "addToOrderedItem":
+      // console.log("ac", action.payload);
+      return {
+        ...state,
+        orderedItems: [...action.payload],
+      };
+
+    case "clearCart":
+      return {
+        ...state,
+        cart: state.cart.filter(
+          (item) => !action.payload.find((orderItem) => orderItem === item)
+        ),
+      };
+
     default:
       return { ...state };
   }
 };
 
-export const initialCartState = { cart: [] };
+export const initialCartState = { cart: [], orderedItems: [] };

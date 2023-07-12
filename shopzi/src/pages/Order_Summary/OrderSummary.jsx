@@ -7,7 +7,7 @@ import { CartContext } from "../../context/CartContext";
 
 const OrderSummary = () => {
   const { orderAddress, orderResponseDetails } = useContext(AddressContext);
-  const { cartState, TotalFinalPrice } = useContext(CartContext);
+  const { cartState, finalOrderedItemsPrice } = useContext(CartContext);
   return (
     <div>
       <Navbar />
@@ -19,8 +19,8 @@ const OrderSummary = () => {
           <div className="summary-main-container">
             {Object.keys(orderAddress).length !== 0 && (
               <div className="summary-left">
-                <h5>Payment Id :{orderResponseDetails.id}</h5>
-                <h5>Total Amount Paid: {TotalFinalPrice}</h5>
+                <h5>Payment Id : {orderResponseDetails.id}</h5>
+                <h5>Total Amount Paid: ₹ {finalOrderedItemsPrice}</h5>
                 <div className="deliver-details">
                   <h4>Deliver to</h4>
                   <strong>{orderAddress?.name}</strong>{" "}
@@ -37,9 +37,9 @@ const OrderSummary = () => {
             )}
             <div className="summary-right">
               <div className="ordered-items">
-                {cartState.cart.length !== 0 && (
+                {cartState.orderedItems.length !== 0 && (
                   <div className="product-list">
-                    {cartState.cart.map((product) => {
+                    {cartState.orderedItems.map((product) => {
                       const {
                         _id,
                         title,

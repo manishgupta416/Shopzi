@@ -150,6 +150,24 @@ export const CartContextProvider = ({ children }) => {
 
   const TotalFinalPrice = totalPrice - discountPrice;
 
+  const orderedItemsPrice = cartState.orderedItems.reduce(
+    (acc, curr) => (Number(acc) + Number(curr.price) * curr.qty).toFixed(2),
+    0
+  );
+
+  const discountPriceOfOrderedItems = cartState.orderedItems.reduce(
+    (acc, curr) =>
+      (
+        Number(acc) +
+        Number(curr.price) -
+        (
+          Number(curr.price) * Number((Number(curr.discount) / 100).toFixed(2))
+        ).toFixed(2)
+      ).toFixed(2),
+    0
+  );
+  const finalOrderedItemsPrice =
+    orderedItemsPrice - discountPriceOfOrderedItems;
   return (
     <CartContext.Provider
       value={{
@@ -163,6 +181,8 @@ export const CartContextProvider = ({ children }) => {
 
         removeFromCart,
         updateCartQnty,
+        cartDispatch,
+        finalOrderedItemsPrice,
       }}
     >
       {children}

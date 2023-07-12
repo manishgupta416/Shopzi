@@ -12,6 +12,7 @@ const Cart = () => {
     discountPrice,
     TotalFinalPrice,
     updateCartQnty,
+    cartDispatch,
     removeFromCart,
   } = useContext(CartContext);
   // console.log(cartState.cart);
@@ -164,7 +165,14 @@ const Cart = () => {
                     </p>
                   </div>
                   <button
-                    onClick={() => navigate("/checkout")}
+                    onClick={() => {
+                      cartDispatch({
+                        type: "addToOrderedItem",
+                        payload: [...cartState.cart],
+                      });
+                      console.log(cartState.orderedItems);
+                      navigate("/checkout");
+                    }}
                     className="cart-button"
                   >
                     CheckOut
