@@ -111,7 +111,8 @@ Shopzi is an e-commerce app to buy products online , where you can find a wide r
 2. cd .\shopzi\
 3. Install dependencies using `npm install`.
 
-4. Create a **.env** file at the root level of the directory (at the level of `package.json` file) and add this as environment variable
+4. Create a **.env** file at the root level of the directory (at the level of `package.json` file) and add this as environment variable (outside src)
+   eg: REACT_APP_JWT_SECRET = 'Manish'
 
 ```sh
 REACT_APP_JWT_SECRET = <JWT_SECRET_KEY_OF_YOUR_CHOICE>
